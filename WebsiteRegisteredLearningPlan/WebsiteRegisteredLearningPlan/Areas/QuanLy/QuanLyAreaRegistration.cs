@@ -17,7 +17,8 @@ namespace WebsiteRegisteredLearningPlan.Areas.QuanLy
             context.MapRoute(
                 "QuanLy_default",
                 "QuanLy/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "TrangChu", id = UrlParameter.Optional },
+                namespaces: new[] { "WebsiteRegisteredLearningPlan.Areas.QuanLy.Controllers" }
             );
         }
     }
