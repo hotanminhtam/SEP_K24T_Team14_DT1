@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteRegisteredLearningPlan.Areas.QuanLy.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: QuanLy/Home

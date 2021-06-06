@@ -113,7 +113,7 @@
                             </div>
                         </div>
                         <a href="index.html">
-                            <img class="img-fluid" src="@Url.Content("~/Content/assets/images/logo.png")" alt="Theme-Logo" />
+                            <img class="img-fluid" height="80" width="160" src="@Url.Content("~/Content/assets/images/vluno.png")" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
                             <i class="ti-more"></i>
@@ -176,7 +176,7 @@
                             <li class="user-profile header-notification">
                                 <a href="#!" class="waves-effect waves-light">
                                     <img src="@Url.Content("~/Content/assets/images/avatar-4.jpg")" class="img-radius" alt="User-Profile-Image">
-                                    <span>John Doe</span>
+                                    <span>@User.Identity.Name</span>
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
@@ -221,7 +221,7 @@
                                 <div class="main-menu-header">
                                     <img class="img-80 img-radius" src="@Url.Content("~/Content/assets/images/avatar-4.jpg")" alt="User-Profile-Image">
                                     <div class="user-details">
-                                        <span id="more-details">John Doe<i class="fa fa-caret-down"></i></span>
+                                        <span id="more-details">@User.Identity.Name<i class="fa fa-caret-down"></i></span>
                                     </div>
                                 </div>
                                 <div class="main-menu-content">
@@ -425,7 +425,7 @@
                         </div>
                         <!-- Page-header end -->
                         <div class="pcoded-inner-content">
-                            <!-- Main-body start -->
+                            @*<!-- Main-body start -->
                             <div class="main-body">
                                 <div class="page-wrapper">
                                     <!-- Page-body start -->
@@ -767,7 +767,7 @@
                                     <!-- Page-body end -->
                                 </div>
                                 <div id="styleSelector"> </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
