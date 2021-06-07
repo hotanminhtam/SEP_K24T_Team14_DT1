@@ -235,6 +235,8 @@
     <Content Include="Content\assets\images\avatar-3.jpg" />
     <Content Include="Content\assets\images\avatar-4.jpg" />
     <Content Include="Content\assets\images\avatar-5.jpg" />
+    <Content Include="Content\assets\images\b1.png" />
+    <Content Include="Content\assets\images\b2.png" />
     <Content Include="Content\assets\images\breadcrumb-bg.jpg" />
     <Content Include="Content\assets\images\browser\chrome.png" />
     <Content Include="Content\assets\images\browser\firefox.png" />
