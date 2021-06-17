@@ -16,12 +16,11 @@
 </head>
 <body>
 
-    <!--================ Header Menu Area start =================-->
     <header class="header_area">
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container box_1620">
-                    <a class="navbar-brand logo_h" href="index.html"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
+                    <a class="navbar-brand logo_h" href="@Url.Content("~/SinhVien/Home/TrangChu/")"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -30,8 +29,8 @@
 
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav justify-content-end">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Trang Chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="feature.html">Chương Trình Đào Tạo</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Content("~/SinhVien/Home/TrangChu/")">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Content("~/SinhVien/CTDTs/Index/")">Chương Trình Đào Tạo</a></li>
                             <li class="nav-item"><a class="nav-link" href="service.html">Đăng Ký kế hoạch học tập</a>
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -70,55 +69,6 @@
             </nav>
         </div>
     </header>
-    <!--================Header Menu Area =================-->
-    <!--================ Banner Section start =================-->
-    <section class="hero-banner text-center">
-        <div class="container">
-            <h3 class="text-uppercase">Trường Đại Học Văn Lang</h3>
-            <h1>Đăng ký kế hoạch học tập</h1>
-            <h2 class="hero-subtitle">Đạo đức - Ý chí - Sáng tạo</h2>
-            <a class="button button-outline" href="#">Đăng ký kế hoạch ngay</a>
-        </div>
-    </section>
-    <!--================ Banner Section end =================-->
-    <!--================ Domain Search section start =================-->
-    <section class="bg-gray domain-search">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-md-3 col-lg-2 text-center text-md-left mb-3 mb-md-0">
-                    <h3>Search Your Domain Now!</h3>
-                </div>
-                <div class="col-md-9 col-lg-10 pl-2 pl-xl-5">
-                    <form class="form-inline flex-nowrap form-domainSearch">
-                        <div class="form-group">
-                            <label for="staticDomainSearch" class="sr-only">Domain Search</label>
-                            <input type="text" class="form-control" id="staticDomainSearch" placeholder="Enter Your Domain name">
-                        </div>
-                        <button type="submit" class="button rounded-0">Search</button>
-                    </form>
-                    <ul class="domain-check">
-                        <li class="checkbox_style">
-                            <input type="checkbox" id="check1">
-                            <label for="check1">.com <span class="dollar-hint">($5.99)</span></label>
-                        </li>
-                        <li class="checkbox_style">
-                            <input type="checkbox" id="check2">
-                            <label for="check2">.net <span class="dollar-hint">($5.99)</span></label>
-                        </li>
-                        <li class="checkbox_style">
-                            <input type="checkbox" id="check3">
-                            <label for="check3">.org <span class="dollar-hint">($5.99)</span></label>
-                        </li>
-                        <li class="checkbox_style">
-                            <input type="checkbox" id="check4">
-                            <label for="check4">.in <span class="dollar-hint">($5.99)</span></label>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </section>
     <!--================ Domain Search section end =================-->
     <!--================ Client logo section start =================-->
     @*<section class="section-margin">
@@ -362,7 +312,7 @@
         </section>*@
     <!--================ Service section end =================-->
     <!--================ Subscribe section start =================-->
-    <section class="bg-gray section-padding">
+    @*<section class="bg-gray section-padding">
         <div class="container">
             <div class="section-intro pb-5 mb-xl-2 text-center">
                 <h2 class="mb-4">Subscribe To Get Our Newsletter</h2>
@@ -378,10 +328,10 @@
                 </div>
             </form>
         </div>
-    </section>
+    </section>*@
     <!--================ Subscribe section end =================-->
     <!--================  Dedicated server section start =================-->
-    <section class="section-margin">
+    @*<section class="section-margin">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-5 mb-lg-0">
@@ -395,7 +345,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
     <!--================  Dedicated server section end =================-->
     <!--================ Testimonial section start =================-->
     @*<section class="bg-gray section-padding">
@@ -496,7 +446,7 @@
                 <div class="col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
                     <h4>About Us</h4>
                     <p>Heaven fruitful doesn't over lesser days appear creeping seasons so behold bearing days open</p>
-                    <a class="navbar-brand logo_h d-none d-xl-block" href="index.html"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
+                    <a class="navbar-brand logo_h d-none d-xl-block" href="@Url.Content("~/SinhVien/Home/TrangChu/")"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
                 </div>
                 <div class="col-xl-3 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
                     <h4>Contact Info</h4>
@@ -520,7 +470,7 @@
                     <h4>Newsletter</h4>
                     <p>Heaven fruitful doesn't over lesser in days. Appear creeping seasons deve behold bearing days open</p>
 
-                    <div class="form-wrap" id="mc_embed_signup">
+                    @*<div class="form-wrap" id="mc_embed_signup">
                         <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
                               method="get">
                             <div class="input-group">
@@ -537,7 +487,7 @@
 
                             <div class="info"></div>
                         </form>
-                    </div>
+                    </div>*@
 
                 </div>
             </div>
