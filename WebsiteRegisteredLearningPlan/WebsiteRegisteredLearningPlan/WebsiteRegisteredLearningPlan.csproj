@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\DangKyKHHTController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -237,6 +238,7 @@
   <ItemGroup>
     <Content Include="Areas\QuanLy\Views\Home\TrangChu.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
+    <None Include="Areas\SinhVien\Views\DangKyKHHT\DangKyKHHT.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />
     <None Include="Areas\SinhVien\Views\Shared\SinhVien.cshtml" />
