@@ -17,9 +17,36 @@
 <section class="section-margin">
 
     <div class="card mb-3">
-        <div class="card-header"><h2 style="color:red; text-align: center">Chương trình đào tạo</h2>
+        <div class="card-header">
+            <h2 style="color:red; text-align: center">Chương trình đào tạo</h2>
         </div>
+        
+
         <div class="card-body">
+            <div class="row" style="float:right; margin-right:3.5em">
+                <div class="col-ld" style="text-align:center">
+                    <form action="@Url.Action("Search", "CTDTs")" method="get">
+                        <p id="dataTable_filter" class="dataTables_filter">
+                            <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm môn học" aria-controls="dataTable"></label>
+                        </p>
+                    </form>
+                </div>
+                <div class="col-ld" style="text-align:center">
+                    <form action="@Url.Action("SearchHP", "CTDTs")" method="get">
+                        <p id="dataTable_filter" class="dataTables_filter">
+                            <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm mã học phần" aria-controls="dataTable"></label>
+                        </p>
+                    </form>
+                </div>
+                <div class="col-ld" style="text-align:center">
+                    <form action="@Url.Action("SearchHK", "CTDTs")" method="get">
+                        <p id="dataTable_filter" class="dataTables_filter">
+                            <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm học kỳ" aria-controls="dataTable"></label>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
             <div class="table-responsive">
                 <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                     <div class="col-sm-12">

@@ -20,6 +20,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             var cTDTs = db.CTDTs.Include(c => c.HOCKY1);
             return View(cTDTs.ToList());
         }
+        
 
         // GET: SinhVien/CTDTs/Details/5
         public ActionResult Details(int? id)
@@ -60,7 +61,27 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             ViewBag.hocky = new SelectList(db.HOCKies, "mahk", "tenhk", cTDT.hocky);
             return View(cTDT);
         }
-
+        public ActionResult Search(string keyword)
+        {
+            var model = db.CTDTs.ToList();
+            model = model.Where(p => p.tenhp.ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.Keyword = keyword;
+            return View("Index", model);
+        }
+        public ActionResult SearchHP(string keyword)
+        {
+            var model = db.CTDTs.ToList();
+            model = model.Where(p => p.mahp.ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.Keyword = keyword;
+            return View("Index", model);
+        }
+        public ActionResult SearchHK(string keyword)
+        {
+            var model = db.CTDTs.ToList();
+            model = model.Where(p => p.hocky.ToString().ToLower().Contains(keyword.ToLower())).ToList();
+            ViewBag.Keyword = keyword;
+            return View("Index", model);
+        }
         // GET: SinhVien/CTDTs/Edit/5
         public ActionResult Edit(int? id)
         {
