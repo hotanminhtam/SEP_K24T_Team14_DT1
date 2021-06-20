@@ -28,6 +28,5 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             return ngayKt - ngayBd >= DateTime.Now - ngayBd;
         }
 
-
     }
 }

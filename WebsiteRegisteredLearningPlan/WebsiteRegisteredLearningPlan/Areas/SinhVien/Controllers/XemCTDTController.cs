@@ -14,7 +14,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
         // GET: SinhVien/XemCTDT
         public ActionResult XemCTDT()
         {
-            var chuongTrinhDaoTao = db.CTDTs;
+            var chuongTrinhDaoTao = db.CTDTs.ToList();
             return View(chuongTrinhDaoTao);
         }
     }
