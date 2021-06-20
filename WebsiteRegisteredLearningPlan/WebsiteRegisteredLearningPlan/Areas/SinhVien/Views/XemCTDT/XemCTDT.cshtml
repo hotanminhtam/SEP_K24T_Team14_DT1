@@ -1,20 +1,22 @@
-﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
-@ViewBag.hocKyHienTai
+﻿@*@model List<WebsiteRegisteredLearningPlan.Models.CTDT>*@
 @{
-    ViewBag.Title = "Đăng ký kế hoạch học tập";
+    ViewBag.Title = "Chương trình đào tạo";
 }
+
 
 <section class="blog_area single-post-area section-margin">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 posts-list">
-                <div class="single-post">
-                    <div class="title" style="text-align:center">
-                        <h2> CHƯƠNG TRÌNH ĐÀO TẠO </h2>
-                    </div>
+        <div class="col-lg-8 posts-list">
+            <div class="single-post">
+                <div class="title" style="text-align:center">
+                    <h2> CHƯƠNG TRÌNH ĐÀO TẠO </h2>
+                </div>
 
 
-                    <table class="table table-bordered" style="text-align: center">
+
+                <center>
+                    <table class="table table-bordered" style="text-align: center ">
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
@@ -22,7 +24,7 @@
                                 <th scope="col">HK</th>
                                 <th scope="col">Tên học phần</th>
                                 <th scope="col">Tín chỉ</th>
-                                <th scope="col"></th>
+                                <th scope="col">Bắt buộc</th>
                                 @*<th>
                                         <input type="checkbox" checked="checked">
                                         <span class="checkmark"></span>
@@ -38,16 +40,17 @@
                                     <td>@item.hocky</td>
                                     <td>@item.tenhp</td>
                                     <td>@item.tinchi</td>
-                                    <td>
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </td>
+                                    @*<td>
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </td>*@
                                 </tr>
                             }
                         </tbody>
                     </table>
-                </div>
+                </center>
             </div>
+        </div>
         </div>
     </div>
 </section>

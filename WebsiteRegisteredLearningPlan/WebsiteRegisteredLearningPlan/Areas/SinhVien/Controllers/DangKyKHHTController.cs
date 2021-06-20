@@ -7,6 +7,7 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
+    [Authorize]
     public class DangKyKHHTController : Controller
     {
         Entities db = new Entities();
@@ -26,5 +27,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
         {
             return ngayKt - ngayBd >= DateTime.Now - ngayBd;
         }
+
+
     }
 }
