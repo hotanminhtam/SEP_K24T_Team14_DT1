@@ -10,7 +10,7 @@ namespace WebsiteRegisteredLearningPlan.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return Redirect("/SinhVien/Home/TrangChu");
         }
 
         public ActionResult About()
