@@ -1,0 +1,71 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+@{
+    ViewBag.Title = "Học Kỳ";
+}
+
+<section class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    <div class="title" style="text-align:center">
+                        <h2> HỌC KỲ </h2>
+                    </div>
+
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Học kỳ 1</a>
+                            <a class="dropdown-item" href="#">Học kỳ 2</a>
+                            <a class="dropdown-item" href="#">Học kỳ 3</a>
+                            <a class="dropdown-item" href="#">Học kỳ 4</a>
+                            <a class="dropdown-item" href="#">Học kỳ 5</a>
+                            <a class="dropdown-item" href="#">Học kỳ 6</a>
+                            <a class="dropdown-item" href="#">Học kỳ 7</a>
+                            <a class="dropdown-item" href="#">Học kỳ 8</a>
+                        </div>
+                    </div>
+
+
+                    <center>
+                        <table class="table table-bordered" style="text-align: center ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    <th scope="col">Bắt buộc</th>
+                                    @*<th>
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.id</th>
+                                        <td>@item.mahp</td>
+                                        <td>@item.hocky</td>
+                                        <td>@item.tenhp</td>
+                                        <td>@item.tinchi</td>
+                                        @*<td>
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -182,6 +182,7 @@
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\Controllers\DangKyKHHTController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\HocKyController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\XemCTDTController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
@@ -242,6 +243,7 @@
     <None Include="Areas\SinhVien\Views\DangKyKHHT\DangKyKHHT.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\SinhVien\Views\HocKy\HocKy.cshtml" />
     <None Include="Areas\SinhVien\Views\Shared\SinhVien.cshtml" />
     <Content Include="Content\assets\css\animate.css\css\animate.css" />
     <Content Include="Content\assets\css\bootstrap\css\bootstrap.min.css" />
