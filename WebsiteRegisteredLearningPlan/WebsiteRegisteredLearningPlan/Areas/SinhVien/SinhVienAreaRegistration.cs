@@ -17,7 +17,8 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien
             context.MapRoute(
                 "SinhVien_default",
                 "SinhVien/{controller}/{action}/{id}",
-                new { action = "HomeSV", id = UrlParameter.Optional }
+                new { action = "TrangChu", id = UrlParameter.Optional },
+                namespaces: new[] { "WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers" }
             );
         }
     }
