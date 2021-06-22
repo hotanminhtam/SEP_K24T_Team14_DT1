@@ -23,9 +23,21 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             return View(chuongTrinhDaoTao);
         }
 
+        [HttpPost]
+        public ActionResult DangKyKHHT(int[] id, bool[] isChosen)
+        {
+            return DangKyKHHT();
+        }
+
         private bool check(DateTime ngayKt, DateTime ngayBd)
         {
             return ngayKt - ngayBd >= DateTime.Now - ngayBd;
         }
+    }
+
+    public class DangKyHP
+    {
+        public int id { get; set; }
+        public bool isChosen { get; set; }
     }
 }

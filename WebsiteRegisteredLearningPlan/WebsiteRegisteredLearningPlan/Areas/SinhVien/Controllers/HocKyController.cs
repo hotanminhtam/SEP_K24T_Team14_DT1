@@ -7,16 +7,18 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
+    [Authorize]
     public class HocKyController : Controller
     {
         Entities db = new Entities();
+       
         // GET: SinhVien/HocKy
-        public ActionResult HocKy()
+        public ActionResult HocKy(int Hk = 1)
         {
-            var hocKyDuyNhat = db.HOCKies.ToList();
-            var chiTietHK = db.CTDTs.ToList();
-            return View(hocKyDuyNhat);
+            var chiTietHK = db.CTDTs.Where(ctdt => ctdt.hocky == Hk).ToList();
+            return View(chiTietHK);
         }
+        
         
     }
 }

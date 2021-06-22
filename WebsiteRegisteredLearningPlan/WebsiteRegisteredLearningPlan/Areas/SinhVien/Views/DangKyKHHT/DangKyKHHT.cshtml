@@ -12,44 +12,54 @@
                     <div class="title" style="text-align:center">
                         <h2> ĐĂNG KÝ KẾ HOẠCH HỌC TẬP </h2>
                     </div>
-                    <div class="btn-link" style="text-align: right">
-                        <button type="button" class="btn btn-danger">Lưu</button>
-                    </div>
-                    <p>
+                    
+                    <form action="@Url.Action("DangKyKHHT", "DangKyKHHT")" method="post">
+                        <div class="btn-link" style="text-align: right">
+                            <button type="submit" class="btn btn-danger">Lưu</button>
+                        </div>
+                        <p>
 
-                    </p>
-                    <table class="table table-bordered" style="text-align: center">
-                        <thead>
-                            <tr>
-                                <th scope="col">STT</th>
-                                <th scope="col">Mã học phần</th>
-                                <th scope="col">HK</th>
-                                <th scope="col">Tên học phần</th>
-                                <th scope="col">Tín chỉ</th>
-                                <th scope="col"></th>
-                                @*<th>
-                                        <input type="checkbox" checked="checked">
-                                        <span class="checkmark"></span>
-                                    </th>*@
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                        </p>
+                        <table class="table table-bordered" style="text-align: center">
+                            <thead>
                                 <tr>
-                                    <th scope="row">@item.id</th>
-                                    <td>@item.mahp</td>
-                                    <td>@item.hocky</td>
-                                    <td>@item.tenhp</td>
-                                    <td>@item.tinchi</td>
-                                    <td>
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </td>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    <th scope="col"></th>
+                                    @*<th>
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </th>*@
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+
+                            @Html.AntiForgeryToken()
+                            <tbody>
+
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td style="display: none"> <input name="id" value="@item.id"></td>
+                                        <th scope="row">@item.id</th>
+                                        <td>@item.mahp</td>
+                                        <td>@item.hocky</td>
+                                        <td>@item.tenhp</td>
+                                        <td>@item.tinchi</td>
+                                        <td>
+                                            <input type="checkbox" name="isChosen">
+                                            <span class="checkmark"></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </form>
                 </div>
             </div>
         </div>
