@@ -24,8 +24,28 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKyKHHT(int[] id, bool[] isChosen)
+        public ActionResult DangKyKHHT(DangKyHP[] model)
         {
+            List<DangKyHP> danhSachHPDaChon = model.Where(item => item.isChosen).ToList();
+            int tongSoTinChi = danhSachHPDaChon.Sum(item => item.soTinChi);
+            if (tongSoTinChi > 16 || tongSoTinChi < 12)
+            {
+                ViewBag.error = "Số tín chỉ không được dưới 12 và lớn hơn 16 tín chỉ";
+                return DangKyKHHT();
+            }
+            var email = User.Identity.Name;
+            var userID = db.AspNetUsers.Single(item => item.Email == email).Id;
+            danhSachHPDaChon.ForEach(hocPhan =>
+            {
+                db.KETQUADANGKies.Add(new KETQUADANGKY
+                {
+                    email = userID,
+                    mahp = hocPhan.id,
+                    ngaydk = DateTime.Now
+                });
+            });
+            db.SaveChanges();
+            ViewBag.success = "Bạn đã đăng ký thành công kế hoạch học tập";
             return DangKyKHHT();
         }
 
@@ -38,6 +58,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
     public class DangKyHP
     {
         public int id { get; set; }
+        public int soTinChi { get; set; }
         public bool isChosen { get; set; }
     }
 }

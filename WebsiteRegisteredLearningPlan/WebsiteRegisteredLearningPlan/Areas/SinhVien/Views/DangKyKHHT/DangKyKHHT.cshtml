@@ -40,17 +40,20 @@
                             <tbody>
 
 
-                                @foreach (var item in Model)
+                                @for (var i = 0; i < Model.Count; i++)
                                 {
+                                    var item = Model[i];
                                     <tr>
-                                        <td style="display: none"> <input name="id" value="@item.id"></td>
+                                        <td style="display: none"> <input name="model[@i].id" value="@item.id"></td>
                                         <th scope="row">@item.id</th>
                                         <td>@item.mahp</td>
                                         <td>@item.hocky</td>
                                         <td>@item.tenhp</td>
                                         <td>@item.tinchi</td>
+                                        <td style="display: none"> <input name="model[@i].soTinChi" value="@item.tinchi"></td>
                                         <td>
-                                            <input type="checkbox" name="isChosen">
+                                            <input type="checkbox" name="model[@i].isChosen" value="true">
+                                            <input type="hidden" name="model[@i].isChosen" value="false" />
                                             <span class="checkmark"></span>
                                         </td>
                                     </tr>
@@ -59,6 +62,14 @@
 
                         </table>
 
+                        @if (ViewBag.error != null)
+                        {
+                            <h3 style="color:#0f00e3">@ViewBag.error</h3>
+                        }
+                        else
+                        {
+                            <h3 style="color:#0f00e3">@ViewBag.success</h3>
+                        }
                     </form>
                 </div>
             </div>

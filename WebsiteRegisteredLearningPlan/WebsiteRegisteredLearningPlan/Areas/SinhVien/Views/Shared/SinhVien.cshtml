@@ -47,16 +47,16 @@
                                     <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 7 })">Học Kỳ 7</a>
                                     <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 8 })">Học Kỳ 8</a>
                                 </ul>
-                            <li class="nav-item"><a class="nav-link" href="~/">Lịch Sử</a></li>
                             </li>
-                            @*<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>*@
+                            
+                            <li class="nav-item"><a class="nav-link" href="~/">Lịch Sử</a></li>
                         </ul>
 
                         <div class="nav-right text-center text-lg-right py-4 py-lg-0">
-                            @*<a class="button button-link mr-4" href="#"><span class="align-middle"><i class="ti-comments"></i></span> Live Chat</a>*@
                             @if (!User.Identity.IsAuthenticated)
                             {
-                                <a class="button button-outline button-small" href="#">Login</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+
                                 <form action="/account/ExternalLogin" method="post" style="display: none">
                                     @Html.AntiForgeryToken()
                                     <button type="submit" id="VanLang" name="provider" value="VanLang">Login</button>
@@ -64,7 +64,12 @@
                             }
                             else
                             {
-                                <a class="button button-outline button-small" href="#">@User.Identity.Name</a>
+                                <a  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#d9001b">@User.Identity.Name</a>
+                                <ul class="dropdown-menu" style="color:#d9001b">
+                                    <li class="nav-item"><a class="nav-link" href="#" >Cập nhật tài khoản</a>
+                                    <li class="nav-item"><a class="nav-link" href="#">Đăng xuất</a>
+                                </ul>
+
                             }
                         </div>
                     </div>
