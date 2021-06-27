@@ -1,0 +1,133 @@
+﻿@model IEnumerable<WebsiteRegisteredLearningPlan.Models.KETQUADANGKY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SinhVien/Views/Shared/SinhVien.cshtml";
+}
+
+<head>
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/tableasset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/tableasset/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+</head>
+
+<section class="section-margin">
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 style="color:red; text-align: center">Lịch sử đăng ký</h2>
+        </div>
+        <div class="container">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="btn-link" style="text-align: right">
+                            <a class="btn btn-danger" href="@Url.Action("Hckhht", "Hckhht")" >Hiệu chỉnh</a>
+                        </div>
+                        <form>
+                            <table class="table table-bordered" style="text-align: center">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th scope="col">Ngày đăng ký</th>
+                                        <th scope="col">Học kỳ</th>
+                                        <th scope="col">Mã học phần</th>
+                                        <th scope="col">Tên học phần</th>
+                                        <th scope="col">Tín chỉ</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                @Html.AntiForgeryToken()
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.id</th>
+                                            <td>
+                                                @item.ngaydk
+                                            </td>
+                                            <td>
+                                                @item.CTDT.hocky
+                                            </td>
+                                            <td>
+                                                @item.CTDT.mahp
+                                            </td>
+                                            <td>
+                                                @item.CTDT.tenhp
+                                            </td>
+                                            <td>
+                                                @item.CTDT.tinchi
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.id },
+                                                                     new { onclick = "return confirm('Are you sure?');" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="~/Content/tableasset/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/Content/tableasset/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="~/Content/tableasset/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/Content/tableasset/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/Content/tableasset/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/Content/tableasset/js/sb-admin-datatables.min.js"></script>
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ngày đăng ký
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Tên học phần
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaydk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CTDT.tenhp)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>*@

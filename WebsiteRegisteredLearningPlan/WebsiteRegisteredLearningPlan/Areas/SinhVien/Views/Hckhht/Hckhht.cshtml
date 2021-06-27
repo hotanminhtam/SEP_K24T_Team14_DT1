@@ -17,11 +17,11 @@
 
     <div class="card mb-3">
         <div class="card-header">
-            <h2 style="color:red; text-align: center">Hiệu chỉnh kế hoạch học tập</h2>
+            <h2 style="color:#d9001b; text-align: center">Hiệu chỉnh kế hoạch học tập</h2>
         </div>
         <div class="container">
             <div class="card-body">
-                <div class="row" style="float:right; margin-right:3.5em">
+                @*<div class="row" style="float:right; margin-right:3.5em">
                     <div class="col-ld" style="text-align:center">
                         <form action="@Url.Action("Search", "CTDTs")" method="get">
                             <p id="dataTable_filter" class="dataTables_filter">
@@ -43,7 +43,7 @@
                             </p>
                         </form>
                     </div>
-                </div>
+                </div>*@
 
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -60,7 +60,7 @@
                             </p>
                             <table class="table table-bordered" style="text-align: center">
                                 <thead>
-                                    <tr>
+                                    <tr style="font: bold; color: #d9001b">
                                         <th scope="col">STT</th>
                                         <th scope="col">Mã học phần</th>
                                         <th scope="col">HK</th>
@@ -94,6 +94,11 @@
                                 </tbody>
                             </table>
                         </form>
+                        <span style="color:blue">
+                            Sinh viên được đăng ký:
+                            <br /> - Tối thiểu là 12 tín chỉ / học kỳ
+                            <br /> - Tối đa là 16 tín chỉ / học kỳ
+                        </span>
                     </div>
                 </div>
             </div>

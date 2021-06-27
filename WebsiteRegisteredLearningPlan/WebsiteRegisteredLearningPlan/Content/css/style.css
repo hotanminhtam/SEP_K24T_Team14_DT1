@@ -188,11 +188,11 @@ h3,
     }
 
         .header_area .navbar .nav-right {
-            min-width: 315px
+            min-width: 290px
         }
 
         .header_area .navbar .nav .nav-item {
-            margin-right: 50px
+            margin-right: 2em
         }
 
             .header_area .navbar .nav .nav-item .nav-link {

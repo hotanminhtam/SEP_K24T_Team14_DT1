@@ -7,6 +7,7 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
+    [Authorize]
     public class HckhhtController : Controller
     {
         private Entities db = new Entities();
@@ -43,7 +44,6 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
                 return Hckhht();
             }
             var email = User.Identity.Name;
-            //var userID = db.AspNetUsers.Single(item => item.Email == email).Id;
             var userID = db.AspNetUsers.Single(item => item.Email == email).Id;
             danhSachHPDaChon.ForEach(hocPhan =>
             {

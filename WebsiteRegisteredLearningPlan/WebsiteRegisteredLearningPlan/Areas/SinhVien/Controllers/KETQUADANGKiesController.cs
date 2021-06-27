@@ -10,133 +10,119 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
-    
-    public class CTDTsController : Controller
+    [Authorize]
+    public class KETQUADANGKiesController : Controller
     {
         private Entities db = new Entities();
 
-        // GET: SinhVien/CTDTs
+        // GET: SinhVien/KETQUADANGKies
         public ActionResult Index()
         {
-            var cTDTs = db.CTDTs.Include(c => c.HOCKY1);
-            return View(cTDTs.ToList());
+            var email = User.Identity.Name;
+            var userID = db.AspNetUsers.Single(m => m.Email == email).Id;
+            var kETQUADANGKies = db.KETQUADANGKies.Where(k => k.AspNetUser.Id == userID).Include(k => k.CTDT);
+            return View(kETQUADANGKies.ToList());
         }
 
-        // GET: SinhVien/CTDTs/Details/5
+        // GET: SinhVien/KETQUADANGKies/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTDT cTDT = db.CTDTs.Find(id);
-            if (cTDT == null)
+            KETQUADANGKY kETQUADANGKY = db.KETQUADANGKies.Find(id);
+            if (kETQUADANGKY == null)
             {
                 return HttpNotFound();
             }
-            return View(cTDT);
+            return View(kETQUADANGKY);
         }
 
-        // GET: SinhVien/CTDTs/Create
+        // GET: SinhVien/KETQUADANGKies/Create
         public ActionResult Create()
         {
-            ViewBag.hocky = new SelectList(db.HOCKies, "mahk", "tenhk");
+            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp");
             return View();
         }
 
-        // POST: SinhVien/CTDTs/Create
+        // POST: SinhVien/KETQUADANGKies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,tenhp,mahp,tinchi,hocky")] CTDT cTDT)
+        public ActionResult Create([Bind(Include = "email,mahp,ngaydk,id")] KETQUADANGKY kETQUADANGKY)
         {
             if (ModelState.IsValid)
             {
-                db.CTDTs.Add(cTDT);
+                db.KETQUADANGKies.Add(kETQUADANGKY);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.hocky = new SelectList(db.HOCKies, "mahk", "tenhk", cTDT.hocky);
-            return View(cTDT);
+            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email", kETQUADANGKY.email);
+            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp", kETQUADANGKY.mahp);
+            return View(kETQUADANGKY);
         }
-        public ActionResult Search(string keyword)
-        {
-            var model = db.CTDTs.ToList();
-            model = model.Where(p => p.tenhp.ToLower().Contains(keyword.ToLower())).ToList();
-            ViewBag.Keyword = keyword;
-            return View("Index", model);
-        }
-        public ActionResult SearchHP(string keyword)
-        {
-            var model = db.CTDTs.ToList();
-            model = model.Where(p => p.mahp.ToLower().Contains(keyword.ToLower())).ToList();
-            ViewBag.Keyword = keyword;
-            return View("Index", model);
-        }
-        public ActionResult SearchHK(string keyword)
-        {
-            var model = db.CTDTs.ToList();
-            model = model.Where(p => p.hocky.ToString().ToLower().Contains(keyword.ToLower())).ToList();
-            ViewBag.Keyword = keyword;
-            return View("Index", model);
-        }
-        // GET: SinhVien/CTDTs/Edit/5
+
+        // GET: SinhVien/KETQUADANGKies/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTDT cTDT = db.CTDTs.Find(id);
-            if (cTDT == null)
+            KETQUADANGKY kETQUADANGKY = db.KETQUADANGKies.Find(id);
+            if (kETQUADANGKY == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.hocky = new SelectList(db.HOCKies, "mahk", "tenhk", cTDT.hocky);
-            return View(cTDT);
+            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email", kETQUADANGKY.email);
+            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp", kETQUADANGKY.mahp);
+            return View(kETQUADANGKY);
         }
 
-        // POST: SinhVien/CTDTs/Edit/5
+        // POST: SinhVien/KETQUADANGKies/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,tenhp,mahp,tinchi,hocky")] CTDT cTDT)
+        public ActionResult Edit([Bind(Include = "email,mahp,ngaydk,id")] KETQUADANGKY kETQUADANGKY)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cTDT).State = EntityState.Modified;
+                db.Entry(kETQUADANGKY).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.hocky = new SelectList(db.HOCKies, "mahk", "tenhk", cTDT.hocky);
-            return View(cTDT);
+            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email", kETQUADANGKY.email);
+            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp", kETQUADANGKY.mahp);
+            return View(kETQUADANGKY);
         }
 
-        // GET: SinhVien/CTDTs/Delete/5
+        // GET: SinhVien/KETQUADANGKies/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CTDT cTDT = db.CTDTs.Find(id);
-            if (cTDT == null)
+            KETQUADANGKY kETQUADANGKY = db.KETQUADANGKies.Find(id);
+            if (kETQUADANGKY == null)
             {
                 return HttpNotFound();
             }
-            return View(cTDT);
+            return View(kETQUADANGKY);
         }
 
-        // POST: SinhVien/CTDTs/Delete/5
+        // POST: SinhVien/KETQUADANGKies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CTDT cTDT = db.CTDTs.Find(id);
-            db.CTDTs.Remove(cTDT);
+            KETQUADANGKY kETQUADANGKY = db.KETQUADANGKies.Find(id);
+            db.KETQUADANGKies.Remove(kETQUADANGKY);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

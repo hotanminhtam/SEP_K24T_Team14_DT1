@@ -45,7 +45,7 @@
                                     <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 8</a>
                                 </ul>
                             </li>
-                            @*<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>*@
+                            <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Sinhvien/KETQUADANGKies/Index/")">Lịch sử</a></li>
                         </ul>
 
                         <div class="nav-right text-center text-lg-right py-4 py-lg-0">
@@ -60,7 +60,15 @@
                             }
                             else
                             {
-                                <a class="button button-outline button-small" href="#">@User.Identity.Name</a>
+                                <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
+                                    <input name="__RequestVerificationToken" type="hidden" value="6MRfw-YVoCzrBxInZe5ujQ16i2_f3GQ2nZ532VGCgGZciWmHTif42q_Rsx8uQnzGk9Y42a-d2Uubdis-G5xFe06yOZOgh8II6SVshC1yYLCezGy1b9OsohI-3keUWEJKm2bkBmFoDCoxsxa4f7a_uQ2"> 
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <a class="button button-outline button-small" href="#">@User.Identity.Name</a>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                        </li>
+                                    </ul>
+                                </form>
                             }
                         </div>
                     </div>

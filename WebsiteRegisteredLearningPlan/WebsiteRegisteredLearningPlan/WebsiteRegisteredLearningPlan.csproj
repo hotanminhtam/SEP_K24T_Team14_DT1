@@ -184,6 +184,7 @@
     <Compile Include="Areas\SinhVien\Controllers\HckhhtController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CTDTsController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\KETQUADANGKiesController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1126,6 +1127,11 @@
     <Content Include="Areas\QuanLy\Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Areas\QuanLy\Views\AspNetUsers\Index.cshtml" />
     <Content Include="Areas\SinhVien\Views\Hckhht\Hckhht.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Create.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Delete.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Edit.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
