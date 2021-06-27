@@ -58,6 +58,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -176,8 +178,10 @@
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\AspNetUsersController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\HckhhtController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CTDTsController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
@@ -203,6 +207,9 @@
     <Compile Include="Models\CTDT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CTTAIKHOAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -214,25 +221,23 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Model1.Context.cs" />
-    <Compile Include="Models\Model1.Context1.cs">
+    <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model1.cs" />
-    <Compile Include="Models\Model1.Designer.cs">
-      <DependentUpon>Model1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model11.cs">
+    <Compile Include="Models\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Model11.Designer.cs">
+    <Compile Include="Models\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -922,11 +927,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model11.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1038,13 +1045,6 @@
     <Content Include="Content\vendors\themify-icons\fonts\themify.ttf" />
     <Content Include="Content\vendors\themify-icons\fonts\themify.woff" />
     <Content Include="Content\vendors\themify-icons\Themify IconFonts 5-23-2014.json" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model11.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\SinhVien\Views\CTDTs\Create.cshtml" />
     <Content Include="Areas\SinhVien\Views\CTDTs\Delete.cshtml" />
     <Content Include="Areas\SinhVien\Views\CTDTs\Details.cshtml" />
@@ -1113,6 +1113,19 @@
     <Content Include="Content\tableasset\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\tableasset\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\tableasset\vendor\font-awesome\scss\_variables.scss" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\QuanLy\Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Areas\QuanLy\Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Areas\QuanLy\Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Areas\QuanLy\Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Areas\QuanLy\Views\AspNetUsers\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\Hckhht\Hckhht.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

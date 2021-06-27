@@ -10,6 +10,7 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
+    [Authorize]
     public class CTDTsController : Controller
     {
         private Entities db = new Entities();
@@ -20,7 +21,6 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             var cTDTs = db.CTDTs.Include(c => c.HOCKY1);
             return View(cTDTs.ToList());
         }
-        
 
         // GET: SinhVien/CTDTs/Details/5
         public ActionResult Details(int? id)
