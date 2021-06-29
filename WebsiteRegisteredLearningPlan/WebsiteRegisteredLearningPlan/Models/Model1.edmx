@@ -76,6 +76,14 @@
           <Property Name="tinchi" Type="int" />
           <Property Name="hocky" Type="int" />
         </EntityType>
+        <EntityType Name="CTTAIKHOAN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="hovaten" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="sdt" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
         <EntityType Name="HOCKY">
           <Key>
             <PropertyRef Name="mahk" />
@@ -94,6 +102,16 @@
           <Property Name="ngaydk" Type="datetime" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <Association Name="FK_CTDT_HK">
           <End Role="HOCKY" Type="Self.HOCKY" Multiplicity="0..1" />
           <End Role="CTDT" Type="Self.CTDT" Multiplicity="*" />
@@ -103,6 +121,18 @@
             </Principal>
             <Dependent Role="CTDT">
               <PropertyRef Name="hocky" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTK_id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="CTTAIKHOAN" Type="Self.CTTAIKHOAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CTTAIKHOAN">
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -194,11 +224,17 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTDT" EntityType="Self.CTDT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CTTAIKHOAN" EntityType="Self.CTTAIKHOAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOCKY" EntityType="Self.HOCKY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KETQUADANGKY" EntityType="Self.KETQUADANGKY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CTDT_HK" Association="Self.FK_CTDT_HK">
             <End Role="HOCKY" EntitySet="HOCKY" />
             <End Role="CTDT" EntitySet="CTDT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTK_id" Association="Self.FK_CTTK_id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CTTAIKHOAN" EntitySet="CTTAIKHOAN" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -236,8 +272,10 @@
           <EntitySet Name="AspNetUserLogins" EntityType="SEP24Team14Model.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="SEP24Team14Model.AspNetUser" />
           <EntitySet Name="CTDTs" EntityType="SEP24Team14Model.CTDT" />
+          <EntitySet Name="CTTAIKHOANs" EntityType="SEP24Team14Model.CTTAIKHOAN" />
           <EntitySet Name="HOCKies" EntityType="SEP24Team14Model.HOCKY" />
           <EntitySet Name="KETQUADANGKies" EntityType="SEP24Team14Model.KETQUADANGKY" />
+          <EntitySet Name="sysdiagrams" EntityType="SEP24Team14Model.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="SEP24Team14Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -245,6 +283,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="SEP24Team14Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTTK_id" Association="SEP24Team14Model.FK_CTTK_id">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="CTTAIKHOAN" EntitySet="CTTAIKHOANs" />
           </AssociationSet>
           <AssociationSet Name="FK_KQDK_EMAIL" Association="SEP24Team14Model.FK_KQDK_EMAIL">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -320,6 +362,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="SEP24Team14Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="SEP24Team14Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="CTTAIKHOAN" Relationship="SEP24Team14Model.FK_CTTK_id" FromRole="AspNetUser" ToRole="CTTAIKHOAN" />
           <NavigationProperty Name="KETQUADANGKies" Relationship="SEP24Team14Model.FK_KQDK_EMAIL" FromRole="AspNetUser" ToRole="KETQUADANGKY" />
           <NavigationProperty Name="AspNetRoles" Relationship="SEP24Team14Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
@@ -334,6 +377,15 @@
           <Property Name="hocky" Type="Int32" />
           <NavigationProperty Name="HOCKY1" Relationship="SEP24Team14Model.FK_CTDT_HK" FromRole="CTDT" ToRole="HOCKY" />
           <NavigationProperty Name="KETQUADANGKies" Relationship="SEP24Team14Model.FK_KQDK_MAHP" FromRole="CTDT" ToRole="KETQUADANGKY" />
+        </EntityType>
+        <EntityType Name="CTTAIKHOAN">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="hovaten" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="sdt" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="SEP24Team14Model.FK_CTTK_id" FromRole="CTTAIKHOAN" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="HOCKY">
           <Key>
@@ -355,6 +407,16 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="AspNetUser" Relationship="SEP24Team14Model.FK_KQDK_EMAIL" FromRole="KETQUADANGKY" ToRole="AspNetUser" />
           <NavigationProperty Name="CTDT" Relationship="SEP24Team14Model.FK_KQDK_MAHP" FromRole="KETQUADANGKY" ToRole="CTDT" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="SEP24Team14Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -381,6 +443,18 @@
             </Principal>
             <Dependent Role="AspNetUserLogin">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTTK_id">
+          <End Type="SEP24Team14Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="SEP24Team14Model.CTTAIKHOAN" Role="CTTAIKHOAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CTTAIKHOAN">
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,6 +570,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CTTAIKHOANs">
+            <EntityTypeMapping TypeName="SEP24Team14Model.CTTAIKHOAN">
+              <MappingFragment StoreEntitySet="CTTAIKHOAN">
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="hovaten" ColumnName="hovaten" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HOCKies">
             <EntityTypeMapping TypeName="SEP24Team14Model.HOCKY">
               <MappingFragment StoreEntitySet="HOCKY">
@@ -513,6 +596,17 @@
                 <ScalarProperty Name="ngaydk" ColumnName="ngaydk" />
                 <ScalarProperty Name="mahp" ColumnName="mahp" />
                 <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SEP24Team14Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

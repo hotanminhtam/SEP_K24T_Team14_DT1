@@ -1,0 +1,70 @@
+﻿@model WebsiteRegisteredLearningPlan.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/QuanLy/Views/Shared/QuanLy.cshtml";
+}
+
+
+<section class="section-margin" style="margin-left: 25%; margin-right: 25%; border: 2px solid; background-color: white">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 style="color: black; text-align: center; margin-top: 2%">Cập nhật thông tin tài khoản</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <h5 style="color:black; margin-left: 10%">Họ và tên</h5>
+                <div class="col-md-10" style="margin-left: 10%; width: 70%">
+                    @Html.EditorFor(model => model.CTTAIKHOAN.hovaten, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                    @Html.ValidationMessageFor(model => model.CTTAIKHOAN.hovaten, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h5 style="color: black; margin-left: 10%">Email</h5>
+                <div class="col-md-10" style="margin-left: 10%; width: 70%">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.SecurityStamp, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SecurityStamp, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SecurityStamp, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group">
+                <h5 style="color: black; margin-left: 10%">Số điện thoại</h5>
+                <div class="col-md-10" style="margin-left: 10%; width: 70%">
+                    @Html.EditorFor(model => model.CTTAIKHOAN.sdt, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                    @Html.ValidationMessageFor(model => model.CTTAIKHOAN.sdt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h5 style="color: black; margin-left: 10%">Chức vụ</h5>
+                <div class="col-md-10" style="margin-left: 10%; width: 70%">
+                    @Html.EditorFor(model => model.CTTAIKHOAN.sdt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CTTAIKHOAN.sdt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left: 75%; margin-bottom: 2%">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lưu" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</section>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

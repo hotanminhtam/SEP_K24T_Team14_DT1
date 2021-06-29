@@ -1,0 +1,47 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+
+@{
+    ViewBag.Title = "HocKy";
+    Layout = "~/Areas/SinhVien/Views/Shared/SinhVien.cshtml";
+}
+
+
+
+<section class="section-margin" style="margin-left: 5%; margin-right:5%; background-color:white">
+    <h2 style="color:black">Danh sách học kỳ</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>STT</th>
+
+                <th>Mã học phần</th>
+
+                <th>Tên học phần</th>
+
+                <th>Học kì</th>
+
+                <th>Tín chỉ</th>
+
+                <th>Bắt buộc</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.id)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.mahp)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.tenhp)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.tinchi)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
