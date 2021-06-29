@@ -20,7 +20,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
         {
             var email = User.Identity.Name;
             var userID = db.AspNetUsers.Single(m => m.Email == email).Id;
-            var kETQUADANGKies = db.KETQUADANGKies.Where(k => k.AspNetUser.Id == userID).Include(k => k.CTDT);
+            var kETQUADANGKies = db.KETQUADANGKies.Where(k => k.AspNetUser.Id == userID);
             return View(kETQUADANGKies.ToList());
         }
 

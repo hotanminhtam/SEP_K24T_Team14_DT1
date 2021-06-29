@@ -2584,10 +2584,11 @@ h3,
 }
 
 .button-small {
-    padding: 5px 45px
+    padding: 5px 20px
 }
 
 .button-outline {
+    margin-left: 2em;
     border: 1px solid #d9001b;
     background: transparent
 }

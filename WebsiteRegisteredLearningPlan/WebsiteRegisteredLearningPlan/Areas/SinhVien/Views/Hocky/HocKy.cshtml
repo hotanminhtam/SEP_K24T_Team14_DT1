@@ -1,0 +1,107 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+@{
+    ViewBag.Title = "Học Kỳ";
+}
+
+<head>
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/tableasset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/tableasset/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/Content/tableasset/css/sb-admin.css" rel="stylesheet" />
+</head>
+
+<section class="section-margin">
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 style="color:red; text-align: center">Học kỳ</h2>
+        </div>
+
+        <div class="container">
+            <div class="card-body">
+                <div class="row" style="float:right; margin-right:3.5em">
+                    <div class="col-ld" style="text-align:center">
+                        <form action="@Url.Action("Search", "CTDTs")" method="get">
+                            <p id="dataTable_filter" class="dataTables_filter">
+                                <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm môn học" aria-controls="dataTable"></label>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="col-ld" style="text-align:center">
+                        <form action="@Url.Action("SearchHP", "CTDTs")" method="get">
+                            <p id="dataTable_filter" class="dataTables_filter">
+                                <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm mã học phần" aria-controls="dataTable"></label>
+                            </p>
+                        </form>
+                    </div>
+                    <div class="col-ld" style="text-align:center">
+                        <form action="@Url.Action("SearchHK", "CTDTs")" method="get">
+                            <p id="dataTable_filter" class="dataTables_filter">
+                                <label><input style="text-align:center" type="text" name="keyword" class="form-control form-control-sm" placeholder="Tìm kiếm học kỳ" aria-controls="dataTable"></label>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Example single danger button -->
+                <div class="btn-group" style=" margin-left: 2.2em;">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Học kỳ
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("HocKy", "HocKy", new { Hk = 1 })">Học kỳ 1</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 2 })">Học kỳ 2</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 3 })">Học kỳ 3</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 4})">Học kỳ 4</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 5})">Học kỳ 5</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 6})">Học kỳ 6</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 7})">Học kỳ 7</a>
+                        <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 8})">Học kỳ 8</a>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr style="text-align:center; color:#d9001b">
+                                        <th>STT</th>
+                                        <th rowspan="1" colspan="1">Mã học phần</th>
+                                        <th rowspan="1" colspan="1">Tên học phần</th>
+                                        <th rowspan="1" colspan="1">Tín chỉ</th>
+                                        <th rowspan="1" colspan="1">Học kỳ</th>
+                                    </tr>
+                                </thead>
+                                <tfoot></tfoot>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="text-align:center">
+                                            <td></td>
+                                            <td>
+                                                @item.mahp
+                                            </td>
+                                            <td>
+                                                @item.tenhp
+                                            </td>
+                                            <td>
+                                                @item.tinchi
+                                            </td>
+                                            <td>
+                                                @item.HOCKY1.tenhk
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

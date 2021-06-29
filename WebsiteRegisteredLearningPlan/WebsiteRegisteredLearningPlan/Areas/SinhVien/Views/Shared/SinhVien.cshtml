@@ -35,14 +35,14 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Học Kỳ</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 1</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 2</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 3</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 4</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 5</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 6</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 7</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Học Kỳ 8</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 1 })">Học Kỳ 1</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 2 })">Học Kỳ 2</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 3 })">Học Kỳ 3</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 4 })">Học Kỳ 4</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 5 })">Học Kỳ 5</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 6 })">Học Kỳ 6</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 7 })">Học Kỳ 7</a>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("HocKy", "HocKy", new { Hk = 8 })">Học Kỳ 8</a>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Sinhvien/KETQUADANGKies/Index/")">Lịch sử</a></li>
@@ -52,7 +52,7 @@
                             @*<a class="button button-link mr-4" href="#"><span class="align-middle"><i class="ti-comments"></i></span> Live Chat</a>*@
                             @if (!User.Identity.IsAuthenticated)
                             {
-                                <a class="button button-outline button-small" href="#">Login</a>
+                                <a class="button button-outline button-small" style="margin-right:10em" href="#">Login</a>
                                 <form action="/account/ExternalLogin" method="post" style="display: none">
                                     @Html.AntiForgeryToken()
                                     <button type="submit" id="VanLang" name="provider" value="VanLang">Login</button>
@@ -61,11 +61,14 @@
                             else
                             {
                                 <form action="/Account/LogOff" class="navbar-right" id="logoutForm" method="post">
-                                    <input name="__RequestVerificationToken" type="hidden" value="6MRfw-YVoCzrBxInZe5ujQ16i2_f3GQ2nZ532VGCgGZciWmHTif42q_Rsx8uQnzGk9Y42a-d2Uubdis-G5xFe06yOZOgh8II6SVshC1yYLCezGy1b9OsohI-3keUWEJKm2bkBmFoDCoxsxa4f7a_uQ2"> 
+                                    @Html.AntiForgeryToken()
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li>
-                                            <a class="button button-outline button-small" href="#">@User.Identity.Name</a>
-                                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                        <li class="nav-item submenu dropdown">
+                                            <a href="#" class="button button-outline button-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+                                            <ul class="dropdown-menu" style="margin-left: 2.5em">
+                                                <li class="nav-item"><a class="nav-link" href="#">Cập nhật tài khoản</a></li>
+                                                <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a></li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </form>
