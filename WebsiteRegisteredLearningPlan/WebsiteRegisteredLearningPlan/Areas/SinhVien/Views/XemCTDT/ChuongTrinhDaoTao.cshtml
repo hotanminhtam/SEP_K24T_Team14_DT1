@@ -8,39 +8,59 @@
 
 <section class="section-margin" style="margin-left: 5%; margin-right:5%; background-color:white">
     <h2 style="color:black">Danh sách học phần</h2>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>STT</th>
 
-                <th>Mã học phần</th>
+    <div class="card-body">
+        <div class="row" style="float:right; margin-right:3.5em">
+            <div class="col-ld" style="text-align:center">
+                <form action="@Url.Action("Search", "XemCTDT")" method="get">
+                    <p>
+                        <input type="text" name="keyword" autocomplete="off"/>
+                        <input type="submit" value="Tìm kiếm"/>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
 
-                <th>Tên học phần</th>
+    <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+            <div class="col-sm-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>STT</th>
 
-                <th>Học kì</th>
+                            <th>Mã học phần</th>
 
-                <th>Tín chỉ</th>
+                            <th>Tên học phần</th>
 
-                <th>Bắt buộc</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.id)</td>
+                            <th>Học kì</th>
 
-                    <td>@Html.DisplayFor(modelItem => item.mahp)</td>
+                            <th>Tín chỉ</th>
 
-                    <td>@Html.DisplayFor(modelItem => item.tenhp)</td>
+                            <th>Bắt buộc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.id)</td>
 
-                    <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+                                <td>@Html.DisplayFor(modelItem => item.mahp)</td>
 
-                    <td>@Html.DisplayFor(modelItem => item.tinchi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.tenhp)</td>
 
-                    <td>@Html.DisplayFor(modelItem => item.hocky)</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                                <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+
+                                <td>@Html.DisplayFor(modelItem => item.tinchi)</td>
+
+                                <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>

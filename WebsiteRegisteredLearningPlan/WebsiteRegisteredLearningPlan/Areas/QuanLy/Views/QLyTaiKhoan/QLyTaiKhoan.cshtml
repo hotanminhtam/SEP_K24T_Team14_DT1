@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model List<WebsiteRegisteredLearningPlan.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "QLyTaiKhoan";
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -170,6 +177,7 @@
                 </div>
             </nav>
 
+
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
@@ -331,14 +339,98 @@
                             </ul>
                         </div>
                     </nav>
+
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Danh sách tài khoản</h5>
+                                            @*<p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>*@
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="breadcrumb">
+                                            <li class="breadcrumb-item">
+                                                <a href="#"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item">
+                                                <a href="#">Trang chủ</a>
+                                            </li>
+                                            <li class="breadcrumb-item">
+                                                <a href="@Url.Action("QLyTaiKhoan", "QLyTaiKhoan")">Tài khoản</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <!-- Basic table card start -->
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>Danh sách tài khoản</h5>
+                                                <div class="card-header-right">
+                                                    <ul class="list-unstyled card-option">
+                                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                                        <li><i class="fa fa-trash close-card"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>Email</th>
+
+                                                                <th>Họ tên</th>
+
+                                                                <th>Số điện thoại</th>
+
+                                                                <th>Chức vụ</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.CTTAIKHOAN.hovaten)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.CTTAIKHOAN.sdt)</td>
+
+                                                                    <td>#</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page-body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    @RenderBody()
-    <!-- Warning Section Starts -->
-    <!-- Warning Section Ends -->
-
     <!-- Required Jquery -->
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery/jquery.min.js ")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-ui/jquery-ui.min.js ")"></script>

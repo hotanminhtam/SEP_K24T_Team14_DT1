@@ -11,29 +11,21 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
     {
         private Entities db = new Entities();
         // GET: SinhVien/CapNhatTT
-        public ActionResult CapNhatTT()
+        public ActionResult CapnhatTT(string id)
         {
-            var capnhat = db.CTTAIKHOANs.ToList();
-            return View(capnhat);
-        }
-
-        // GET: SinhVien/CapNhatTT/CapNhatTT/5
-        public ActionResult Edit(string id)
-        {
-            var users = db.CTTAIKHOANs.Find(id) ?? new CTTAIKHOAN
+            var user = db.CTTAIKHOANs.Find(id) ?? new CTTAIKHOAN
             {
                 id = id,
                 hovaten = "",
                 sdt = "",
                 AspNetUser = db.AspNetUsers.Find(id)
             };
-            return View(users);
+            return View(user);
         }
 
-        // POST: SinhVien/CapNhatTT/CapNhatTT/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(string id, string hovaten, string sdt)
+        public ActionResult Luu(string id, string hovaten, string sdt)
         {
             var user = db.CTTAIKHOANs.Find(id);
             if (user == null)
@@ -53,6 +45,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
                 db.Entry<CTTAIKHOAN>(user).State = System.Data.Entity.EntityState.Modified;
             }
             db.SaveChanges();
+            ViewBag.message = "Cập nhật thành công";
             return View("CapNhatTT", user);
         }
     }

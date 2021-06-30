@@ -180,8 +180,10 @@
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\CapNhatTGController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
-    <Compile Include="Areas\QuanLy\Controllers\QLTaiKhoanController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\QLyHocKyController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\QLyTaiKhoanController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CapNhatTTController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HocKyController.cs" />
@@ -247,11 +249,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\QuanLy\Views\Home\TrangChu.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLTaiKhoan\Create.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLTaiKhoan\Delete.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLTaiKhoan\Details.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLTaiKhoan\Edit.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLTaiKhoan\Index.cshtml" />
+    <Content Include="Areas\QuanLy\Views\QLyTaiKhoan\QLyTaiKhoan.cshtml" />
+    <Content Include="Areas\QuanLy\Views\CapNhatTG\CapNhatTG.cshtml" />
+    <Content Include="Areas\QuanLy\Views\QLyHocKy\QlyHocKy.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />

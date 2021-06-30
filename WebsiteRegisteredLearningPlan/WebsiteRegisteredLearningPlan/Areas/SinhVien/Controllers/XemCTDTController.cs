@@ -16,5 +16,16 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             var ctdt = db.CTDTs.ToList();
             return View(ctdt);
         }
+
+        //Search
+        public ActionResult Search(string keyword)
+        {
+            var kw = db.CTDTs.ToList();
+            kw = kw.Where(p => p.mahp.ToLower().Contains(keyword.ToLower()) || 
+                          p.tenhp.ToLower().Contains(keyword.ToLower())).ToList();
+            
+            ViewBag.Keyword = keyword;
+            return View("ChuongTrinhDaoTao", kw);
+        }
     }
 }
