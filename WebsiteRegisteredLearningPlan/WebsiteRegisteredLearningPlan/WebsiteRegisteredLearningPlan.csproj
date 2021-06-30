@@ -181,10 +181,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\CapnhatTaiKhoanController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\DangKyKHHTController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\HieuchinhKHHTController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HocKyController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\XemCTDTController.cs" />
+    <Compile Include="Areas\SinhVien\Models\KetQuaDangKyViewModel.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -206,6 +209,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTDT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CTTAIKHOAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
@@ -234,16 +240,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\QuanLy\Views\Home\TrangChu.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CapnhatTaiKhoan\CapnhatTK.cshtml" />
     <None Include="Areas\SinhVien\Views\DangKyKHHT\DangKyKHHT.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />
     <Content Include="Areas\SinhVien\Views\HocKy\HocKy.cshtml" />
+    <Content Include="Areas\SinhVien\Views\HieuchinhKHHT\HieuchinhKHHT.cshtml" />
     <None Include="Areas\SinhVien\Views\Shared\SinhVien.cshtml" />
     <Content Include="Content\assets\css\animate.css\css\animate.css" />
     <Content Include="Content\assets\css\bootstrap\css\bootstrap.min.css" />
@@ -1067,7 +1078,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\QuanLy\Models\" />
-    <Folder Include="Areas\SinhVien\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

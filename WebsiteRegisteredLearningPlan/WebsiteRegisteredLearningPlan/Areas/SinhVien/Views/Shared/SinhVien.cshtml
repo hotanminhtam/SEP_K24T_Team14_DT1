@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,7 +53,7 @@
                             <li class="nav-item"><a class="nav-link" href="~/">Lịch Sử</a></li>
                         </ul>
 
-                        <div class="nav-right text-center text-lg-right py-4 py-lg-0">
+                        <div class="nav-right text-right py-4 py-lg-0 dropdown">
                             @if (!User.Identity.IsAuthenticated)
                             {
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
@@ -64,10 +65,12 @@
                             }
                             else
                             {
-                                <a  href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#d9001b">@User.Identity.Name</a>
-                                <ul class="dropdown-menu" style="color:#d9001b">
-                                    <li class="nav-item"><a class="nav-link" href="#" >Cập nhật tài khoản</a>
-                                    <li class="nav-item"><a class="nav-link" href="#">Đăng xuất</a>
+                                <a  href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:#d9001b" data-bs-toggle="dropdown" id="user-dropdown">@User.Identity.Name</a>
+                                <ul class="dropdown-menu dropdown-menu-right" style="color:#d9001b" aria-labelledby="user-dropdown">
+                                    <li class="nav-item dropdown-item"><a class="nav-link" href="@Url.Action("CapnhatTK", "CapnhatTaiKhoan", new { id = User.Identity.GetUserId() })" >Cập nhật tài khoản</a>
+                                    <li class="nav-item dropdown-item"><a class="nav-link" href="#" id="logoff">Đăng xuất</a>
+                                <form style="display:none" action="/account/logoff" id="form-logoff" method="post">@Html.AntiForgeryToken()
+                                </form>
                                 </ul>
 
                             }
@@ -163,7 +166,10 @@
     <script>
         $('.button.button-outline.button-small').click(() => {
             $('#VanLang').click();
-        })
+        });
+        $('#logoff').click(() => {
+            $('#form-logoff').submit();
+        });
     </script>
 </body>
 </html>

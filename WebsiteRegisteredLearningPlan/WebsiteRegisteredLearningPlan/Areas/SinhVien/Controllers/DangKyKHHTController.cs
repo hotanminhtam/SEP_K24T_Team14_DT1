@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,9 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             // ow day no de List<CTDT>
             var ngayHienTai = DateTime.Now;
             var hocKyHienTai = db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
+            var userId = User.Identity.GetUserId();
+            if (db.KETQUADANGKies.Any(kqdk => kqdk.email == userId))
+                ViewBag.isRegistered = true;
             var chuongTrinhDaoTao = db.CTDTs.Where(item => item.hocky == hocKyHienTai).ToList();
             ViewBag.hocKyHienTai = hocKyHienTai;
             return View(chuongTrinhDaoTao);
@@ -33,8 +37,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
                 ViewBag.error = "Số tín chỉ không được dưới 12 và lớn hơn 16 tín chỉ";
                 return DangKyKHHT();
             }
-            var email = User.Identity.Name;
-            var userID = db.AspNetUsers.Single(item => item.Email == email).Id;
+            var userID = User.Identity.GetUserId();
             danhSachHPDaChon.ForEach(hocPhan =>
             {
                 db.KETQUADANGKies.Add(new KETQUADANGKY

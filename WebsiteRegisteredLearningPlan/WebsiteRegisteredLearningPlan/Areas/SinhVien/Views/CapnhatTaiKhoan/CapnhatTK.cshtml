@@ -1,0 +1,44 @@
+﻿@model WebsiteRegisteredLearningPlan.Models.CTTAIKHOAN
+@{
+    ViewBag.Title = "CapnhatTK";
+}
+
+<section class="section-margin">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form action="@Url.Action("Luu", "CapnhatTaiKhoan")" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" value="@Model.id" name="id" />
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" disabled value="@Model.AspNetUser.Email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="hovaten" class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" id="hovaten" value="@Model.hovaten" name="hovaten">
+                            </div>
+                            <div class="mb-3">
+                                <label for="sdt" class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="sdt" value="@Model.sdt" name="sdt">
+                            </div>
+
+                            @if(ViewBag.message != null)
+                            {
+                                <h3>@ViewBag.message</h3>
+                            }
+
+                            <div class="form-group mt-lg-3">
+                                <button style="color:#fff" type="submit" class="button button-contactForm">Lưu</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
