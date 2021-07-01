@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,19 +9,22 @@ using WebsiteRegisteredLearningPlan.Models;
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
     [Authorize]
-    public class HckhhtController : Controller
+    public class DangKyKHHTController : Controller
     {
         private Entities db = new Entities();
 
         // GET: SinhVien/Hckhht
-        public ActionResult Hckhht()
+        public ActionResult DangKyKHHT()
         {
             var ngayHienTai = DateTime.Now;
             var hocKyHienTai = db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
-            //var cTDTs = db.CTDTs.Include(c => c.HOCKY1);
-            var cTDTs = db.CTDTs.Where(item => item.hocky == hocKyHienTai).ToList();
+            var userId = User.Identity.GetUserId();
+            if (db.KETQUADANGKies.Any(kqdk => kqdk.email == userId))
+                ViewBag.isRegistered = true;
+            var chuongTrinhDaoTao = db.CTDTs.Where(item => item.hocky == hocKyHienTai).ToList();
             ViewBag.hocKyHienTai = hocKyHienTai;
-            return View(cTDTs);
+            return View(chuongTrinhDaoTao);
+
         }
 
         private bool check(DateTime ngaykt, DateTime ngaybd)
@@ -29,22 +33,21 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
         }
 
         [HttpPost]
-        public ActionResult Hckhht(DangKyHP[] model)
+        public ActionResult DangKyKHHT(DangKyHP[] model)
         {
             List<DangKyHP> danhSachHPDaChon = model.Where(item => item.isChosen).ToList();
             int tongSoTinChi = danhSachHPDaChon.Sum(item => item.soTinChi);
             if (tongSoTinChi > 16)
             {
                 TempData["Success"] = "Số tín chỉ không được trên 16 tín chỉ"; ;
-                return Hckhht();
+                return DangKyKHHT();
             }
             else if (tongSoTinChi < 12)
             {
                 TempData["Success"] = "Số tín chỉ không được dưới 12 tín chỉ"; ;
-                return Hckhht();
+                return DangKyKHHT();
             }
-            var email = User.Identity.Name;
-            var userID = db.AspNetUsers.Single(item => item.Email == email).Id;
+            var userID = User.Identity.GetUserId();
             danhSachHPDaChon.ForEach(hocPhan =>
             {
                 db.KETQUADANGKies.Add(new KETQUADANGKY
@@ -56,7 +59,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             });
             db.SaveChanges();
             TempData["Success"] = "Bạn đã hiệu chỉnh thành công kế hoạch học tập";
-            return Hckhht();
+            return DangKyKHHT();
         }
 
         protected override void Dispose(bool disposing)

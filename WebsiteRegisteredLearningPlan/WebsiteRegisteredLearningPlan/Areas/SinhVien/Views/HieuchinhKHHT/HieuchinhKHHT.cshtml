@@ -1,5 +1,5 @@
-﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
-    @ViewBag.hocKyHienTai
+﻿@model List<WebsiteRegisteredLearningPlan.Areas.SinhVien.Models.KetQuaDangKyViewModel>
+@ViewBag.hocKyHienTai
 @{
     ViewBag.Title = "Hiệu chỉnh kế hoạch học tập";
 }
@@ -23,13 +23,13 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                        <form action="@Url.Action("Hckhht", "Hckhht")" method="post">
+                        <form action="@Url.Action("HieuchinhKHHT", "HieuchinhKHHT")" method="post">
                             @if (TempData["Success"] != null)
                             {
                                 <p class="alert alert-warning" style="color:darkblue; background-color: #dc354550; font-size:18px" id="successMessage">@TempData["Success"]</p>
                             }
                             <div class="btn-link" style="text-align: right">
-                                <button type="submit" class="btn btn-danger">Lưu</button>
+                                <button type="submit" class="btn btn-danger" onclick="confirm('Are you sure?')">Lưu</button>
                             </div>
                             <p>
 
@@ -43,7 +43,7 @@
                                         <th scope="col">Tên học phần</th>
                                         <th scope="col">Tín chỉ</th>
                                         <th scope="col"></th>
-                                        
+
                                     </tr>
                                 </thead>
 
@@ -53,15 +53,22 @@
                                     {
                                         var item = Model[i];
                                         <tr>
-                                            <td style="display: none"> <input name="model[@i].id" value="@item.id"></td>
-                                            <th scope="row">@item.id</th>
-                                            <td>@item.mahp</td>
-                                            <td>@item.hocky</td>
-                                            <td>@item.tenhp</td>
-                                            <td>@item.tinchi</td>
-                                            <td style="display: none"> <input name="model[@i].soTinChi" value="@item.tinchi"></td>
+                                            <td style="display: none"> <input name="model[@i].id" value="@item.ctdt.id"></td>
+                                            <th scope="row">@item.ctdt.id</th>
+                                            <td>@item.ctdt.mahp</td>
+                                            <td>@item.ctdt.hocky</td>
+                                            <td>@item.ctdt.tenhp</td>
+                                            <td>@item.ctdt.tinchi</td>
+                                            <td style="display: none"> <input name="model[@i].soTinChi" value="@item.ctdt.tinchi"></td>
                                             <td>
-                                                <input type="checkbox" name="model[@i].isChosen" value="true">
+                                                @if (item.chosen)
+                                                {
+                                                    <input type="checkbox" name="model[@i].isChosen" value="true" checked>
+                                                }
+                                                else
+                                                {
+                                                    <input type="checkbox" name="model[@i].isChosen" value="true">
+                                                }
                                                 <input type="hidden" name="model[@i].isChosen" value="false" />
                                                 <span class="checkmark"></span>
                                             </td>
@@ -79,7 +86,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </section>

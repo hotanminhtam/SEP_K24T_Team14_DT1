@@ -1,0 +1,104 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+    @ViewBag.hocKyHienTai
+@{
+    ViewBag.Title = "Hiệu chỉnh kế hoạch học tập";
+}
+
+<head>
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/tableasset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/tableasset/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+</head>
+
+<section class="section-margin">
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 style="color:#d9001b; text-align: center">Đăng ký kế hoạch học tập</h2>
+        </div>
+        <div class="container">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        @if (ViewBag.isRegistered == true)
+                        {
+                            <h3 style="text-align: center; color:#d9001b">
+                                Bạn đã đăng ký kế hoạch học tập cho học kỳ này, vui lòng vào trang
+                                <a href="@Url.Action("HieuchinhKHHT", "HieuchinhKHHT")">hiệu chỉnh</a>
+                            </h3>
+                        }
+                        else
+                        {
+                            <form action="@Url.Action("DangKyKHHT", "DangKyKHHT")" method="post">
+                                @if (TempData["Success"] != null)
+                                {
+                                    <p class="alert alert-warning" style="color:darkblue; background-color: #dc354550; font-size:18px" id="successMessage">@TempData["Success"]</p>
+                                }
+                                <div class="btn-link" style="text-align: right">
+                                    <button type="submit" class="btn btn-danger" onclick="confirm('Bạn đã đăng ký thành công!')">Lưu</button>
+                                </div>
+                                <p>
+
+                                </p>
+                                <table class="table table-bordered" style="text-align: center">
+                                    <thead>
+                                        <tr style="font: bold; color: #d9001b">
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Mã học phần</th>
+                                            <th scope="col">HK</th>
+                                            <th scope="col">Tên học phần</th>
+                                            <th scope="col">Tín chỉ</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+
+                                    @Html.AntiForgeryToken()
+                                    <tbody>
+                                        @for (var i = 0; i < Model.Count; i++)
+                                        {
+                                            var item = Model[i];
+                                            <tr>
+                                                <td style="display: none"> <input name="model[@i].id" value="@item.id"></td>
+                                                <th scope="row">@item.id</th>
+                                                <td>@item.mahp</td>
+                                                <td>@item.hocky</td>
+                                                <td>@item.tenhp</td>
+                                                <td>@item.tinchi</td>
+                                                <td style="display: none"> <input name="model[@i].soTinChi" value="@item.tinchi"></td>
+                                                <td>
+                                                    <input type="checkbox" name="model[@i].isChosen" value="true">
+                                                    <input type="hidden" name="model[@i].isChosen" value="false" />
+                                                    <span class="checkmark"></span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </form>
+                        <span style="color:blue">
+                            Sinh viên được đăng ký:
+                            <br /> - Tối thiểu là 12 tín chỉ / học kỳ
+                            <br /> - Tối đa là 16 tín chỉ / học kỳ
+                        </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/tableasset/vendor/jquery/jquery.min.js"></script>
+<script src="~/Content/vendors/bootstrap/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/Content/tableasset/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="~/Content/tableasset/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/Content/tableasset/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/Content/tableasset/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/Content/tableasset/js/sb-admin-datatables.min.js"></script>
