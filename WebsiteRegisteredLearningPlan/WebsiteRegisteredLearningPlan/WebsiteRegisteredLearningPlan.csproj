@@ -1126,10 +1126,7 @@
     <Content Include="Areas\QuanLy\Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Areas\QuanLy\Views\AspNetUsers\Index.cshtml" />
     <Content Include="Areas\SinhVien\Views\DangKyKHHT\DangKyKHHT.cshtml" />
-    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Create.cshtml" />
-    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Delete.cshtml" />
-    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Details.cshtml" />
-    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Edit.cshtml" />
+    <Content Include="Areas\SinhVien\Views\KETQUADANGKies\chitietlichsu.cshtml" />
     <Content Include="Areas\SinhVien\Views\KETQUADANGKies\Index.cshtml" />
     <Content Include="Areas\SinhVien\Views\Hocky\HocKy.cshtml" />
     <Content Include="Areas\SinhVien\Views\HieuchinhKHHT\HieuchinhKHHT.cshtml" />

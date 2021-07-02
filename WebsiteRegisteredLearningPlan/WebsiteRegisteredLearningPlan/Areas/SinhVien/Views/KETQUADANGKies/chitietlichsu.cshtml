@@ -24,41 +24,42 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <div class="btn-link" style="text-align: right">
+                            <a class="btn btn-danger" href="@Url.Action("HieuchinhKHHT", "HieuchinhKHHT")">Hiệu chỉnh</a>
+
+                        </div>
                         <form>
                             <table class="table table-bordered" style="text-align: center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Ngày đăng ký</th>
                                         <th scope="col">Học kỳ</th>
-                                        <th>Tổng số môn</th>
-                                        <th>Tổng số tín chỉ</th>
-                                        <th>
+                                        <th scope="col">Mã học phần</th>
+                                        <th scope="col">Tên học phần</th>
+                                        <th scope="col">Tín chỉ</th>
                                     </tr>
                                 </thead>
 
                                 @Html.AntiForgeryToken()
                                 <tbody>
-                                    @for (var i = 1; i <= 1; i++)
+                                    @for (var i = 0; i < Model.Count; i++)
                                     {
                                         var item = Model[i];
-                                        var sotinchi = Model.Sum(tc => tc.CTDT.tinchi);
                                         <tr>
                                             <td>
-                                                <a href="@Url.Action("chitietlichsu", "KETQUADANGKies")">@item.ngaydk</a>
+                                                @item.ngaydk
                                             </td>
                                             <td>
                                                 @item.CTDT.hocky
                                             </td>
                                             <td>
-                                                @Model.Count()
+                                                @item.CTDT.mahp
                                             </td>
                                             <td>
-                                                @sotinchi
+                                                @item.CTDT.tenhp
                                             </td>
                                             <td>
-                                                <a href="@Url.Action("chitietlichsu", "KETQUADANGKies")">
-                                                    <i class="ti-eye"></i>
-                                                </a>
+                                                @item.CTDT.tinchi
                                             </td>
                                         </tr>
                                     }
@@ -86,3 +87,31 @@
 <!-- Custom scripts for this page-->
 <script src="~/Content/tableasset/js/sb-admin-datatables.min.js"></script>
 
+
+@*@Html.AntiForgeryToken()
+    <tbody>
+        @for (var i = 0; i <= 1; i++)
+        {
+            var item = Model[i];
+            <tr>
+                <td>
+                    @item.ngaydk
+                </td>
+                <td>
+                    @item.CTDT.hocky
+                </td>
+                <td>
+                    @item.CTDT.mahp
+                </td>
+                <td>
+                    @item.CTDT.tenhp
+                </td>
+                <td>
+                    @item.CTDT.tinchi
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id },
+                                         new { onclick = "return confirm('Are you sure?');" })
+                </td>
+            </tr>
+        }*@

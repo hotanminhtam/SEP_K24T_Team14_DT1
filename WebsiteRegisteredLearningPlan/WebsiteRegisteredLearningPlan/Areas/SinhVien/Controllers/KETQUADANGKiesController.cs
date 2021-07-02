@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using WebsiteRegisteredLearningPlan.Areas.SinhVien.Models;
 using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
@@ -39,31 +41,12 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             return View(kETQUADANGKY);
         }
 
-        // GET: SinhVien/KETQUADANGKies/Create
-        public ActionResult Create()
+        public ActionResult chitietlichsu()
         {
-            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp");
-            return View();
-        }
-
-        // POST: SinhVien/KETQUADANGKies/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "email,mahp,ngaydk,id")] KETQUADANGKY kETQUADANGKY)
-        {
-            if (ModelState.IsValid)
-            {
-                db.KETQUADANGKies.Add(kETQUADANGKY);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.email = new SelectList(db.AspNetUsers, "Id", "Email", kETQUADANGKY.email);
-            ViewBag.mahp = new SelectList(db.CTDTs, "id", "tenhp", kETQUADANGKY.mahp);
-            return View(kETQUADANGKY);
+            var email = User.Identity.Name;
+            var userID = db.AspNetUsers.Single(m => m.Email == email).Id;
+            var kETQUADANGKies = db.KETQUADANGKies.Where(k => k.AspNetUser.Id == userID);
+            return View(kETQUADANGKies.ToList());
         }
 
         // GET: SinhVien/KETQUADANGKies/Edit/5
@@ -126,14 +109,9 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
+        private bool check(DateTime tgdk, DateTime ngaydk)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return ngaydk == tgdk;
         }
     }
 }
