@@ -13,13 +13,15 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
     {
         Entities db = new Entities();
         // GET: SinhVien/HieuchinhKHHT
-        public ActionResult HieuchinhKHHT()
+        [HttpGet]
+        public ActionResult HieuchinhKHHT(int? hk = null)
         {
             var ngayHienTai = DateTime.Now;
             var hocKyHienTai = db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
+            hk = hk ?? hocKyHienTai;
             var userId = User.Identity.GetUserId();
-            var nhungMonTrongHocKy = db.CTDTs.Where(ctdt => ctdt.hocky == hocKyHienTai)
-                .Select(item => new KetQuaDangKyViewModel { ctdt = item, chosen = item.KETQUADANGKies.FirstOrDefault(kqdk => kqdk.email == userId) != null}).ToList();
+            var nhungMonTrongHocKy = db.CTDTs.Where(ctdt => ctdt.hocky == hk)
+                .Select(item => new KetQuaDangKyViewModel { ctdt = item, chosen = item.KETQUADANGKies.FirstOrDefault(kqdk => kqdk.email == userId && kqdk.active == 1) != null}).ToList();
             return View(nhungMonTrongHocKy);
         }
 
@@ -43,10 +45,20 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
                     {
                         email = userID,
                         mahp = item.id,
-                        ngaydk = DateTime.Now
+                        ngaydk = DateTime.Now,
+                        active = 1
                     });
                 else if (dangKyTruocDay != null && !item.isChosen)
-                    db.KETQUADANGKies.Remove(dangKyTruocDay);
+                {
+                    dangKyTruocDay.active = 0;
+                    db.KETQUADANGKies.Add(new KETQUADANGKY
+                    {
+                        email = userID,
+                        mahp = item.id,
+                        ngaydk = DateTime.Now,
+                        active = 0
+                    });
+                }
             });
             db.SaveChanges();
             ViewBag.success = "Bạn đã hiệu chỉnh thành công kế hoạch học tập";

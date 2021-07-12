@@ -3,20 +3,26 @@
     ViewBag.Title = "HieuchinhKHHT";
 }
 
-
-<section class="blog_area single-post-area section-margin">
+<section class="hero-banner hero-banner-sm text-center">
+    <div class="container">
+        <h1>Hiệu chỉnh kế hoạch học tập</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Hiệu chỉnh kế hoạch học tập</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section style="margin: 40px 0"class="blog_area single-post-area section-margin">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="single-post">
-                    <div class="title" style="text-align:center">
-                        <h2> ĐĂNG KÝ KẾ HOẠCH HỌC TẬP </h2>
-                    </div>
-
+                    @*<div class="title" style="text-align:center">
+            <h2> HIỆU CHỈNH KẾ HOẠCH HỌC TẬP </h2>
+        </div>*@
                     <form action="@Url.Action("HieuchinhKHHT", "HieuchinhKHHT")" method="post">
-                        <div class="btn-link" style="text-align: right">
-                            <button type="submit" class="btn btn-danger">Lưu</button>
-                        </div>
                         <p>
 
                         </p>
@@ -30,9 +36,9 @@
                                     <th scope="col">Tín chỉ</th>
                                     <th scope="col"></th>
                                     @*<th>
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </th>*@
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                    </th>*@
                                 </tr>
                             </thead>
 
@@ -77,6 +83,9 @@
                         {
                             <h3 style="color:#0f00e3">@ViewBag.success</h3>
                         }
+                        <div class="btn-link" style="text-align: right">
+                            <button style="width:120px" type="submit" class="btn btn-danger">Lưu</button>
+                        </div>
                     </form>
                 </div>
             </div>

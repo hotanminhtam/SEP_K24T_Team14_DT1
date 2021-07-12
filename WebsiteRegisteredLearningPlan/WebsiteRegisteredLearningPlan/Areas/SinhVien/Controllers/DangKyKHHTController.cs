@@ -13,14 +13,14 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
     {
         Entities db = new Entities();
         // GET: SinhVien/DangKyKHHT
-        public ActionResult DangKyKHHT()
+        public ActionResult DangKyKHHT(int? Dk = null)
         {
             // ben nay de kieu gi, ben kia de y nhu v
             // ow day no de List<CTDT>
             var ngayHienTai = DateTime.Now;
-            var hocKyHienTai = db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
+            var hocKyHienTai = Dk ?? db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
             var userId = User.Identity.GetUserId();
-            if (db.KETQUADANGKies.Any(kqdk => kqdk.email == userId))
+            if (db.KETQUADANGKies.Any(kqdk => kqdk.email == userId && kqdk.CTDT.hocky == hocKyHienTai))
                 ViewBag.isRegistered = true;
             var chuongTrinhDaoTao = db.CTDTs.Where(item => item.hocky == hocKyHienTai).ToList();
             ViewBag.hocKyHienTai = hocKyHienTai;
@@ -44,7 +44,8 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
                 {
                     email = userID,
                     mahp = hocPhan.id,
-                    ngaydk = DateTime.Now
+                    ngaydk = DateTime.Now,
+                    active = 1
                 });
             });
             db.SaveChanges();

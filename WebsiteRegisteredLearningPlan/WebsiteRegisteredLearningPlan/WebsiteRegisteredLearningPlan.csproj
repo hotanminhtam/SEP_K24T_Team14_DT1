@@ -179,13 +179,19 @@
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\CTDTController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\DSTaiKhoanController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\HocKyQLController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\PhanQuyenController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\ThongKeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CapnhatTaiKhoanController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\DangKyKHHTController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HieuchinhKHHTController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HocKyController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\LichSuController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\XemCTDTController.cs" />
     <Compile Include="Areas\SinhVien\Models\KetQuaDangKyViewModel.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
@@ -248,13 +254,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\QuanLy\Views\Home\TrangChu.cshtml" />
+    <Content Include="Areas\QuanLy\Views\HocKyQL\HocKyQL.cshtml" />
+    <Content Include="Areas\QuanLy\Views\DSTaiKhoan\DSTaiKhoan.cshtml" />
+    <Content Include="Areas\QuanLy\Views\PhanQuyen\PhanQuyen.cshtml" />
+    <Content Include="Areas\QuanLy\Views\CTDT\CTDT.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
     <Content Include="Areas\SinhVien\Views\CapnhatTaiKhoan\CapnhatTK.cshtml" />
+    <Content Include="Areas\QuanLy\Views\ThongKe\ThongKe.cshtml" />
     <None Include="Areas\SinhVien\Views\DangKyKHHT\DangKyKHHT.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />
     <Content Include="Areas\SinhVien\Views\HocKy\HocKy.cshtml" />
     <Content Include="Areas\SinhVien\Views\HieuchinhKHHT\HieuchinhKHHT.cshtml" />
+    <Content Include="Areas\SinhVien\Views\LichSu\LichSu.cshtml" />
     <None Include="Areas\SinhVien\Views\Shared\SinhVien.cshtml" />
     <Content Include="Content\assets\css\animate.css\css\animate.css" />
     <Content Include="Content\assets\css\bootstrap\css\bootstrap.min.css" />
@@ -1040,7 +1052,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
