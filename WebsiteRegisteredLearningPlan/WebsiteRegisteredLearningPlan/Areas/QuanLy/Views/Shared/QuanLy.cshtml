@@ -111,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="index.html">
+                        <a href="~/Quanly/Home/TrangChu">
                             <img class="img-fluid" height="80" width="160" src="@Url.Content("~/Content/assets/images/vluno.png")" alt="Theme-Logo" />
                         </a>
                         <a class="mobile-options waves-effect waves-light">
@@ -217,28 +217,28 @@
                         <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
                         <div class="pcoded-inner-navbar main-menu">
                             @*<div class="">
-                                <div style="height: 124px;" class="main-menu-header">
-                                    <div style="margin-top:30px" class="user-details">
-                                        <span id="more-details">@User.Identity.Name<i class="fa fa-caret-down"></i></span>
-                                    </div>
-                                </div>
-                                <div class="main-menu-content">
-                                    <ul>
-                                        <li class="more-details">
-                                            <form style="display:none" action="/account/logoff" id="form-logoff" method="post">
-                                                @Html.AntiForgeryToken()
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>*@
+            <div style="height: 124px;" class="main-menu-header">
+                <div style="margin-top:30px" class="user-details">
+                    <span id="more-details">@User.Identity.Name<i class="fa fa-caret-down"></i></span>
+                </div>
+            </div>
+            <div class="main-menu-content">
+                <ul>
+                    <li class="more-details">
+                        <form style="display:none" action="/account/logoff" id="form-logoff" method="post">
+                            @Html.AntiForgeryToken()
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
                             <div class="p-15 p-b-0">
                                 <form class="form-material">
                                     @*<div class="form-group form-primary">
-                                            <input type="text" name="footer-email" class="form-control">
-                                            <span class="form-bar"></span>
-                                            <label class="float-label"><i class="fa fa-search m-r-10"></i>Tì</label>
-                                        </div>*@
+                    <input type="text" name="footer-email" class="form-control">
+                    <span class="form-bar"></span>
+                    <label class="float-label"><i class="fa fa-search m-r-10"></i>Tì</label>
+                </div>*@
                                 </form>
                             </div>
                             <div class="pcoded-navigation-label">Đào Tạo</div>
@@ -331,19 +331,70 @@
                             </ul>
                             <div class="pcoded-navigation-label">Thống kê</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="">
-                                    <a href="chart-morris.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-bar-chart-alt"></i><b>C</b></span>
-                                        <span class="pcoded-mtext">Xem thống kê</span>
+                                <li class="pcoded-hasmenu">
+                                    <a href="#" class="waves-effect waves-dark">
+                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i><b>HK</b></span>
+                                        <span class="pcoded-mtext">Thống kê</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
-                                </li>
-                                <li class="">
-                                    <a href="map-google.html" class="waves-effect waves-dark">
-                                        <span class="pcoded-micon"><i class="ti-map-alt"></i><b>M</b></span>
-                                        <span class="pcoded-mtext">Xuất thống kê</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=1" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 1</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=2" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 2</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=3" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 3</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=4" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 4</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=5" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 5</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=6" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 6</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=7" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 7</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="/QuanLy/ThongKe/ThongKe?hk=8" class="waves-effect waves-dark">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext">Học kỳ 8</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                             <div class="pcoded-navigation-label">Trang</div>
@@ -356,12 +407,12 @@
                                     </a>
                                     <ul class="pcoded-submenu">
                                         @*<li class="">
-                                            <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext">Đăng xuất</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>*@
+                        <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext">Đăng xuất</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>*@
                                         <li class="">
                                             <a href="~/" class="waves-effect waves-dark">
                                                 <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
@@ -415,7 +466,6 @@
                                     <div class="page-body">
                                         <div class="row">
                                             <!-- Material statustic card start -->
-                                           
                                             <!-- Project statustic end -->
                                         </div>
                                     </div>
@@ -431,8 +481,6 @@
     </div>
 
     <!-- Warning Section Starts -->
-    
-   
     <!-- Required Jquery -->
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery/jquery.min.js ")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-ui/jquery-ui.min.js ")"></script>
@@ -451,6 +499,7 @@
     <script src="@Url.Content("~/Content/assets/js/vertical/vertical-layout.min.js ")"></script>
 
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/script.js ")"></script>
+    @RenderSection("js", false)
 </body>
 
 </html>

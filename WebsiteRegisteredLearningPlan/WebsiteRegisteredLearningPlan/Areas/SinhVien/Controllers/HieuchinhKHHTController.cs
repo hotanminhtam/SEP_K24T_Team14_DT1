@@ -20,20 +20,23 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             var hocKyHienTai = db.HOCKies.ToList().First(item => check(item.ngaykt.Value, item.ngaybd.Value)).mahk;
             hk = hk ?? hocKyHienTai;
             var userId = User.Identity.GetUserId();
-            var nhungMonTrongHocKy = db.CTDTs.Where(ctdt => ctdt.hocky == hk)
-                .Select(item => new KetQuaDangKyViewModel { ctdt = item, chosen = item.KETQUADANGKies.FirstOrDefault(kqdk => kqdk.email == userId && kqdk.active == 1) != null}).ToList();
+            var nhungMonTrongHocKy = db.CTDTs.Where(item => item.hocky == hk || item.KETQUADANGKies
+                        .Count(kqdk => kqdk.email == userId) == 0)
+                .Where(item => item.hocky <= hk)
+                .Select(item => new KetQuaDangKyViewModel { ctdt = item, chosen = item.KETQUADANGKies.FirstOrDefault(kqdk => kqdk.email == userId && kqdk.active == 1) != null }).ToList();
+            ViewBag.hocKy = hk;
             return View(nhungMonTrongHocKy);
         }
 
         [HttpPost]
-        public ActionResult HieuchinhKHHT(DangKyHP[] model)
+        public ActionResult HieuchinhKHHT(DangKyHP[] model, int? hk = null)
         {
             List<DangKyHP> danhSachHPDaChon = model.Where(item => item.isChosen).ToList();
             int tongSoTinChi = danhSachHPDaChon.Sum(item => item.soTinChi);
             if (tongSoTinChi > 16 || tongSoTinChi < 12)
             {
                 ViewBag.error = "Số tín chỉ không được dưới 12 và lớn hơn 16 tín chỉ";
-                return HieuchinhKHHT();
+                return HieuchinhKHHT(hk);
             }
             var userID = User.Identity.GetUserId();
             var ketQuaDks = db.KETQUADANGKies.Where(kq => kq.email == userID).ToList();
@@ -62,7 +65,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             });
             db.SaveChanges();
             ViewBag.success = "Bạn đã hiệu chỉnh thành công kế hoạch học tập";
-            return HieuchinhKHHT();
+            return HieuchinhKHHT(hk);
         }
 
         private bool check(DateTime ngayKt, DateTime ngayBd)

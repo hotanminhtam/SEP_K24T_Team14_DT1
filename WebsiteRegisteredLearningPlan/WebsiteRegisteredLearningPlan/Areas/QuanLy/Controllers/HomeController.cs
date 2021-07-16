@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteRegisteredLearningPlan.Areas.QuanLy.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "BCN Khoa, Quản trị")]
     public class HomeController : Controller
     {
         // GET: QuanLy/Home

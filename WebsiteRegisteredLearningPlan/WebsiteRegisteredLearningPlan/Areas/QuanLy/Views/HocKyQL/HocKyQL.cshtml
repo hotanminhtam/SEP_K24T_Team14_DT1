@@ -35,6 +35,7 @@
                                         <th scope="col">Mã học kỳ</th>
                                         <th scope="col">Ngày bắt đầu</th>
                                         <th scope="col">Ngày kết thúc</th>
+                                        <th scope="col">*</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,7 @@
                                         <td>@item.mahk</td>
                                         <td>@item.ngaybd</td>
                                         <td>@item.ngaykt</td>
+                                        <td>@Html.ActionLink("Cập nhật", "DeadlineHK", new { id = item.mahk })</td>
                                     </tr>
                                     }
                                 </tbody>

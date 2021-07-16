@@ -1,80 +1,49 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "ThongKe";
+
 }
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+@section js{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            $(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ChartData", "ThongKe", new { area = "QuanLy", hk = ViewBag.hk })',
+                    success: function (charts) {
+                        if (charts.code == 404) {
+                            alert("Error loading data! Please try again.");
+                            return;
+                        }
+                        var data = charts.dbchart;
+                        var chartdb = new google.visualization.DataTable();
 
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <p class="highcharts-description">
-        Chart with buttons to modify options, showing how options can be changed
-        on the fly. This flexibility allows for more dynamic charts.
-    </p>
-  </figure>
+                        chartdb.addColumn('string', 'Môn học');
+                        chartdb.addColumn('number', 'Số lượng');
+                        for (var i = 0; i < data.length; i++) {
+                            chartdb.addRow([data[i].name, data[i].count]);
+                        }
+                        console.log(chartdb);
+                        var chart = new google.visualization.BarChart(document.getElementById('myChart'));
+                        chart.draw(chartdb,
+                            {
+                                title: "Biểu đồ đăng ký môn học - học kỳ @ViewBag.hk",
+                            position: "top",
+                            fontsize: "14px",
+                        });
 
-<script>
-    //$(document).ready(function () {
-    //    $.getJSON("~/QuanLy/ThongKe/ThongKe"), function (data) {
-            const chart = Highcharts.chart('container', {
-                title: {
-                    text: 'Chart.update'
-                },
-                subtitle: {
-                    text: 'Plain'
-                },
-                xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                },
-                series: [{
-                    type: 'column',
-                    colorByPoint: true,
-                    data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-                    showInLegend: false
-                }]
-            });
-
-            document.getElementById('plain').addEventListener('click', () => {
-                chart.update({
-                    chart: {
-                        inverted: false,
-                        polar: false
                     },
-                    subtitle: {
-                        text: 'Plain'
+                    error: function () {
+                        alert("Error loading data! Please try again.");
                     }
                 });
-            });
+            })
 
-            document.getElementById('inverted').addEventListener('click', () => {
-                chart.update({
-                    chart: {
-                        inverted: true,
-                        polar: false
-                    },
-                    subtitle: {
-                        text: 'Inverted'
-                    }
-                });
-            });
-
-            document.getElementById('polar').addEventListener('click', () => {
-                chart.update({
-                    chart: {
-                        inverted: false,
-                        polar: true
-                    },
-                    subtitle: {
-                        text: 'Polar'
-                    }
-                });
-            });
-
-    //    }
-    //});
-
-</script>
+        }
+    </script>
+}
+<div id="myChart" style="width:100%; max-width:1500px; height:1000px;"></div>
+<a href="@Url.Action("print","XuatThongKe", new { hk = ViewBag.hk })" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" >Xuất thống kê</a>

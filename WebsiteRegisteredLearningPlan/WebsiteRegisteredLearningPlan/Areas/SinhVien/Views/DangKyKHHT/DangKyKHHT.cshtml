@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Đăng ký kế hoạch học tập";
 }
-
 <section class="hero-banner hero-banner-sm text-center">
     <div class="container">
         <h1>Đăng ký kế hoạch học tập</h1>
@@ -21,9 +20,13 @@
             <div class="col-lg-8 posts-list">
                 <div class="single-post">
                     @*<div class="title" style="text-align:center">
-                        <h2> ĐĂNG KÝ KẾ HOẠCH HỌC TẬP </h2>
-                    </div>*@
-                    @if (ViewBag.isRegistered == true)
+                            <h2> ĐĂNG KÝ KẾ HOẠCH HỌC TẬP </h2>
+                        </div>*@
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <h3 style="text-align: center">@ViewBag.ErrorMessage</h3>
+                    }
+                    else if (ViewBag.isRegistered == true)
                     {
                         <h3 style="text-align:center">
                             Bạn đã đăng ký kế hoạch học tập cho học kỳ này, vui lòng vào trang
@@ -47,9 +50,9 @@
                                         <th scope="col">Tín chỉ</th>
                                         <th scope="col"></th>
                                         @*<th>
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </th>*@
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                            </th>*@
                                     </tr>
                                 </thead>
 
@@ -97,4 +100,3 @@
         </div>
     </div>
 </section>
-<!--================Blog Area =================-->

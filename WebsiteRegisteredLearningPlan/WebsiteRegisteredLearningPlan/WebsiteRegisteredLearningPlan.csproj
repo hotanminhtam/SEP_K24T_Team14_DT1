@@ -46,15 +46,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=5.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.7.1\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.VanLang, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Capstone.Owin.Security.VanLang.2.0.0.1\lib\net452\Microsoft.Owin.Security.VanLang.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -116,6 +135,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -185,6 +205,7 @@
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\PhanQuyenController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\XuatThongKeController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\Controllers\CapnhatTaiKhoanController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\DangKyKHHTController.cs" />
@@ -258,6 +279,7 @@
     <Content Include="Areas\QuanLy\Views\DSTaiKhoan\DSTaiKhoan.cshtml" />
     <Content Include="Areas\QuanLy\Views\PhanQuyen\PhanQuyen.cshtml" />
     <Content Include="Areas\QuanLy\Views\CTDT\CTDT.cshtml" />
+    <Content Include="Areas\QuanLy\Views\HocKyQL\DeadlineHK.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
     <Content Include="Areas\SinhVien\Views\CapnhatTaiKhoan\CapnhatTK.cshtml" />
     <Content Include="Areas\QuanLy\Views\ThongKe\ThongKe.cshtml" />
@@ -931,7 +953,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\SinhVien\Views\web.config" />
-    <Content Include="Areas\QuanLy\Views\web.config" />
+    <Content Include="Areas\QuanLy\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\SinhVien\Views\_ViewStart.cshtml" />
     <Content Include="Content\css\style.map" />
     <Content Include="Content\img\blog\.DS_Store" />
@@ -1041,6 +1065,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\SinhVien\Views\XemCTDT\XemCTDT.cshtml" />
+    <Content Include="Content\assets\ThongKe.xlsx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1092,6 +1117,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\QuanLy\Models\" />
+    <Folder Include="Areas\QuanLy\Views\XuatThongKe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
