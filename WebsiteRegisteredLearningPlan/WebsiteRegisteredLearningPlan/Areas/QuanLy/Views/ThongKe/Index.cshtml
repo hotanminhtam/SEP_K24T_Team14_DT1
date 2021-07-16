@@ -2,49 +2,106 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/SinhVien/Views/Shared/SinhVien.cshtml";
+    Layout = "~/Areas/QuanLy/Views/Shared/QuanLy.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<section class="section-margin">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 style="color:#d9001b; text-align: center">Thống kê sinh viên đăng ký</h2>
+        </div>
 
-<a href="@Url.Action("XuatExcel","ThongKe")">Xuất Excel</a>
+        @section js{
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                google.charts.load('current', { 'packages': ['corechart'] });// Cú pháp mặc định của google chart js
+                google.charts.setOnLoadCallback(drawChart);// Gọi hàm drawChart
+                function drawChart() {
+                    $(function () {
+                        //sử dụng ajax
+                        $.ajax({
+                            type: 'POST',
+                            //Url.Action là phương thức tạo ra đường dẫn trong asp mvc
+                            url: '@Url.Action("ChartData", "ThongKe", new { area = "QuanLy" })',
+                            //charts là biến lấy tất cả các kết quả trả về từ hàm ChartData
+                            success: function (charts) {
+                                //dbchart là biến được trả về từ hàm ChartData
+                                var data = charts.dbchart;
+                                //tạo biến chartdb kiểu datatable của google
+                                var chartdb = new google.visualization.DataTable();
+                                //thêm 2 tiêu đề cho bảng dữ liệu trong đó ('kiểu dữ liệu', 'Tên cột')
+                                //Do biểu đồ ở đây chỉ có 2 cột là môn học và số lượng
+                                chartdb.addColumn('string', 'Môn học');
+                                chartdb.addColumn('number', 'Số lượng');
+                                // Thêm dữ liệu vào biến chartdb
+                                for (var i = 0; i < data.length; i++) {
+                                    chartdb.addRow([data[i].name, data[i].count]);
+                                }
+                                //document.getElementById('myChart') là lấy thẻ có id là myChart
+                                var chart = new google.visualization.BarChart(document.getElementById('myChart'));
+                                chart.draw(chartdb,
+                                {
+                                    title: "Biểu đồ đăng ký môn học", //tiêu đề của biểu đồ
+                                    position: "top",
+                                    fontsize: "14px",
+                                    colors: ['#d95f02']
+                                });
+                            },
+                            error: function () {
+                                alert("Error loading data! Please try again.");
+                            }
+                        });
+                    })
+                }
+            </script>
+        }
+        <div id="myChart" style="width:100%; max-width:1000px; height:1000px;"></div>
+    </div>
+</section>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ngaydk)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CTDT.tenhp)
-        </th>
-        <th></th>
-    </tr>
+<section class="section-margin">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngaydk)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CTDT.tenhp)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
-            </td>
-        </tr>
-    }
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 style="color:#d9001b; text-align: center">Danh sách sinh viên đăng ký</h2>
+        </div>
+        <div class="container">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                        <button class="btn-block"><a href="@Url.Action("XuatExcel","ThongKe")"><i class="ti-export">  Xuất Excel </i></a></button>
+                        <table class="table table-bordered" style="text-align: center">
+                            <thead>
+                                <tr style="font: bold; color: #d9001b">
+                                    <th scope="col">Ngày đăng ký</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Tên học phần</th>
+                                </tr>
+                            </thead>
 
-</table>
+                            @Html.AntiForgeryToken()
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ngaydk)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CTDT.tenhp)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
