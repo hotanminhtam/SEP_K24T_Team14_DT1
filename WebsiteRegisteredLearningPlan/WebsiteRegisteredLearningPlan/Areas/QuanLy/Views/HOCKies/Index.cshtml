@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebsiteRegisteredLearningPlan.Models.HOCKY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/QuanLy/Views/Shared/QuanLy.cshtml";
+}
+
+<h2>Cập nhật ngày kết thúc</h2>
+
+<p>
+
+</p>
+
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <!-- Basic table card start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Học kỳ</h5>
+                        @*<span>use class <code>table</code> inside table element</span>*@
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                <li><i class="fa fa-window-maximize full-card"></i></li>
+                                <li><i class="fa fa-minus minimize-card"></i></li>
+                                <li><i class="fa fa-refresh reload-card"></i></li>
+                                @*<li><i class="fa fa-trash close-card"></i></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block table-border-style">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th scope="col">Học kỳ</th>
+                                    <th scope="col">Mã học kỳ</th>
+                                    <th scope="col">Ngày bắt đầu</th>
+                                    <th scope="col">Ngày kết thúc</th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.tenhk</td>
+                                        <td>@item.mahk</td>
+                                        <td>@item.ngaybd</td>
+                                        <td>@item.ngaykt</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.mahk })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic table card end -->
+            </div>
+            <!-- Page-body end -->
+        </div>
+    </div>
+    <!-- Main-body end -->
+
+    <div id="styleSelector">
+
+    </div>
+</div>
+
+

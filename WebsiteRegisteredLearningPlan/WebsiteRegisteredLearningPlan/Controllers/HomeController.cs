@@ -26,5 +26,6 @@ namespace WebsiteRegisteredLearningPlan.Controllers
 
             return View();
         }
+
     }
 }

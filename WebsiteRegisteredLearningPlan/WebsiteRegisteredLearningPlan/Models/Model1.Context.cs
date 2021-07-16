@@ -31,7 +31,9 @@ namespace WebsiteRegisteredLearningPlan.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CTDT> CTDTs { get; set; }
+        public virtual DbSet<CTTAIKHOAN> CTTAIKHOANs { get; set; }
         public virtual DbSet<HOCKY> HOCKies { get; set; }
         public virtual DbSet<KETQUADANGKY> KETQUADANGKies { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

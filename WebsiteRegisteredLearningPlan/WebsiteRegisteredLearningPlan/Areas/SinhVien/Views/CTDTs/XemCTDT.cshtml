@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebsiteRegisteredLearningPlan.Models.CTDT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SinhVien/Views/Shared/SinhVien.cshtml";
+}
+
+<section class="section-margin" style="margin-top:10%;margin-left:20%;margin-right:20%">
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên học phần</th>
+                <th scope="col">Mã học phần</th>
+                <th scope="col">Tín chỉ</th>
+                <th scope="col">Học kỳ</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <th scope="row">@item.id</th>
+                    <td>@Html.DisplayFor(modelItem => item.tenhp)</td>
+                    <td>@Html.DisplayFor(modelItem => item.mahp)</td>
+                    <td>@Html.DisplayFor(modelItem => item.tinchi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.HOCKY1.tenhk)</td>
+
+                </tr>
+            </tbody>
+        }
+    </table>
+
+</section>
