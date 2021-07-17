@@ -3,7 +3,16 @@
     ViewBag.Title = "HocKyQL";
 }
 
-
+<div class="col-md-4">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"> <i class="fa fa-home"></i> </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="~/QuanLy/HocKyQL/HocKyQL">Quản lý học kỳ</a>
+        </li>
+    </ul>
+</div>
 <div class="pcoded-inner-content">
     <!-- Main-body start -->
     <div class="main-body">
@@ -39,17 +48,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @for(int i = 0; i < Model.Count; i++)
-                                   {
-                                   var item = Model[i];
-                                    <tr>
-                                        <th scope="row">@i</th>
-                                        <td>@item.tenhk</td>
-                                        <td>@item.mahk</td>
-                                        <td>@item.ngaybd</td>
-                                        <td>@item.ngaykt</td>
-                                        <td>@Html.ActionLink("Cập nhật", "DeadlineHK", new { id = item.mahk })</td>
-                                    </tr>
+                                    @for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        var item = Model[i];
+                                        <tr>
+                                            <th scope="row">@i</th>
+                                            <td>@item.tenhk</td>
+                                            <td>@item.mahk</td>
+                                            <td>@item.ngaybd</td>
+                                            <td>@item.ngaykt</td>
+                                            <td>@Html.ActionLink("Cập nhật", "DeadlineHK", new { id = item.mahk })</td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>

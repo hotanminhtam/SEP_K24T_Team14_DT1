@@ -3,6 +3,17 @@
 
 }
 
+<div class="col-md-4">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"> <i class="fa fa-home"></i> </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="~/QuanLy/ThongKe/ThongKe">Thống Kê học kỳ @ViewBag.hk</a>
+        </li>
+    </ul>
+</div>
+
 @section js{
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -46,4 +57,4 @@
     </script>
 }
 <div id="myChart" style="width:100%; max-width:1500px; height:1000px;"></div>
-<a href="@Url.Action("print","XuatThongKe", new { hk = ViewBag.hk })" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" >Xuất thống kê</a>
+<a href="@Url.Action("print","XuatThongKe", new { hk = ViewBag.hk })" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Xuất thống kê</a>
