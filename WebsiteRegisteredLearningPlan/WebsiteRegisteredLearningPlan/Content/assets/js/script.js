@@ -228,4 +228,3 @@ function toggleFullScreen() {
     }
 }
 
-$("body").append('<div class="fixed-button active"><a href="https://codedthemes.com/item/flash-able-bootstrap-admin-template/" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro</a> </div>');var $window=$(window),nav=$(".fixed-button");
