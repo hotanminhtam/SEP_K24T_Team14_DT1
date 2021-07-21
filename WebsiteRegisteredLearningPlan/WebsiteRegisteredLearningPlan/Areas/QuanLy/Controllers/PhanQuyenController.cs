@@ -7,7 +7,7 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.QuanLy.Controllers
 {
-    [Authorize(Roles = "BCN Khoa, Quản trị")]
+    [Authorize(Roles = "Quản trị")]
     public class PhanQuyenController : Controller
     {
         Entities db = new Entities();

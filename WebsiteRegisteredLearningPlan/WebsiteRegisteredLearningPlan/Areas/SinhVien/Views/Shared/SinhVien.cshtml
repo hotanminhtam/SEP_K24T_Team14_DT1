@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lorahost hosting - Home</title>
-    <link rel="icon" href="img/Fevicon.png" type="image/png">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="@Url.Content("~/Content/img/unnamed.png")" type="image/png">
 
     <link rel="stylesheet" href="@Url.Content("~/Content/vendors/bootstrap/bootstrap.min.css")">
     <link rel="stylesheet" href="@Url.Content("~/Content/vendors/themify-icons/themify-icons.css")">
@@ -22,7 +22,7 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container box_1620">
-                    <a class="navbar-brand logo_h" href="~/"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
+                    <a class="navbar-brand logo_h" href="~/SinhVien/Home/TrangChu"><img height="80" width="180" src="@Url.Content("~/Content/img/vluno.png")" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -31,7 +31,7 @@
 
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav justify-content-end">
-                            <li class="nav-item"><a class="nav-link" href="~/">Trang Chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="~/SinhVien/Home/TrangChu">Trang Chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="~/SinhVien/XemCTDT/XemCTDT">Chương Trình Đào Tạo</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="~/SinhVien/DangkyKHHT/DangkyKHHT" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -182,8 +182,6 @@
        
     </footer>
     <!-- ================ End footer Area ================= -->
-
-
 
 
     <script src="@Url.Content("~/Content/vendors/jquery/jquery-3.2.1.min.js")"></script>

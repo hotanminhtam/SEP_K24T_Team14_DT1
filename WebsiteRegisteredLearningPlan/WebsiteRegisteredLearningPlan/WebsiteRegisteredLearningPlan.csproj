@@ -341,6 +341,7 @@
     <Content Include="Content\assets\images\mega-menu\02.jpg" />
     <Content Include="Content\assets\images\mega-menu\03.jpg" />
     <Content Include="Content\assets\images\select-arrow.png" />
+    <Content Include="Content\assets\images\unnamed.png" />
     <Content Include="Content\assets\images\user-bg.jpg" />
     <Content Include="Content\assets\images\vluno.png" />
     <Content Include="Content\assets\images\widget\AUSTRALIA.jpg" />
@@ -536,6 +537,7 @@
     <Content Include="Content\img\testimonial\testimonial1.png" />
     <Content Include="Content\img\testimonial\testimonial2.png" />
     <Content Include="Content\img\testimonial\testimonial3.png" />
+    <Content Include="Content\img\unnamed.png" />
     <Content Include="Content\img\vluno.png" />
     <Content Include="Content\js\contact.js" />
     <Content Include="Content\js\countdown.js" />
