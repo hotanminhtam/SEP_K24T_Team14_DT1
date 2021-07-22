@@ -85,7 +85,7 @@
                             {
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
 
-                                <form action="/account/ExternalLogin" method="post" style="display: none">
+                                <form action="@Url.Action("~/account/ExternalLogin")" method="post" style="display: none">
                                     @Html.AntiForgeryToken()
                                     <button type="submit" id="VanLang" name="provider" value="VanLang">Login</button>
                                 </form>
@@ -96,8 +96,8 @@
                                 <ul class="dropdown-menu dropdown-menu-right" style="color:#d9001b" aria-labelledby="user-dropdown">
                                     <li class="nav-item dropdown-item"><a class="nav-link" style="color:#d9001b" href="@Url.Action("CapnhatTK", "CapnhatTaiKhoan", new { id = User.Identity.GetUserId() })">Cập nhật tài khoản</a>
                                     <li class="nav-item dropdown-item">
-                                        <a class="nav-link" style="color:#d9001b" href="#" id="logoff">Đăng xuất</a>
-                                        <form style="display:none" action="/account/logoff" id="form-logoff" method="post">
+                                        <a class="nav-link" style="color:#d9001b" href="~/Account/Login" id="logoff">Đăng xuất</a>
+                                        <form style="display:none" action="~/account/logoff" id="form-logoff" method="post">
                                             @Html.AntiForgeryToken()
                                         </form>
                                 </ul>
@@ -168,8 +168,8 @@
         <div class="footer-bottom row align-items-center text-center text-lg-left">
             <p class="footer-text m-0 col-lg-8 col-md-12">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Năm &copy;
-                <script>document.write(new Date().getFullYear());</script>Software Engineering | VLU <i class="ti-heart" aria-hidden="true"></i> by <a href="" target="_blank">Team 14 </a>
+                &copy;
+                <script>document.write(new Date().getFullYear());</script> Software Engineering | VLU <i class="ti-heart" aria-hidden="true"></i> by <a href="" target="_blank">Team 14 </a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
             @*<div class="col-lg-4 col-md-12 text-center text-lg-right footer-social" style="align-content">

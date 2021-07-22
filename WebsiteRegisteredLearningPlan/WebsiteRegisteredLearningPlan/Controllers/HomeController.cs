@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace WebsiteRegisteredLearningPlan.Controllers
 {
@@ -10,7 +6,7 @@ namespace WebsiteRegisteredLearningPlan.Controllers
     {
         public ActionResult Index()
         {
-            return Redirect("/SinhVien/Home/TrangChu");
+            return Redirect("~/SinhVien/Home/TrangChu");
         }
 
         public ActionResult About()
