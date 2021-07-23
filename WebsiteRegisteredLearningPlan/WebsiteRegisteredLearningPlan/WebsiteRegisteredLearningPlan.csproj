@@ -52,15 +52,26 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=5.7.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.5.7.1\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.VanLang, Version=2.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Capstone.Owin.Security.VanLang.2.0.0.1\lib\net452\Microsoft.Owin.Security.VanLang.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -123,6 +134,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNet.Identity.Core">
@@ -180,12 +192,12 @@
     <Compile Include="App_Start\RouteConfig2.cs" />
     <Compile Include="App_Start\RouteConfig3.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\QuanLy\Controllers\CapNhatTGController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\HomeController.cs" />
+    <Compile Include="Areas\QuanLy\Controllers\QLyCTDTController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\QLyHocKyController.cs" />
     <Compile Include="Areas\QuanLy\Controllers\QLyTaiKhoanController.cs" />
     <Compile Include="Areas\QuanLy\QuanLyAreaRegistration.cs" />
-    <Compile Include="Areas\SinhVien\Controllers\CapNhatTTController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\CapnhatTaiKhoanController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HocKyController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\HomeController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\XemCTDTController.cs" />
@@ -250,13 +262,14 @@
   <ItemGroup>
     <Content Include="Areas\QuanLy\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\QLyTaiKhoan\QLyTaiKhoan.cshtml" />
-    <Content Include="Areas\QuanLy\Views\CapNhatTG\CapNhatTG.cshtml" />
-    <Content Include="Areas\QuanLy\Views\QLyHocKy\QlyHocKy.cshtml" />
+    <Content Include="Areas\QuanLy\Views\QLyHocKy\QLyHocKy.cshtml" />
+    <Content Include="Areas\QuanLy\Views\QLyCTDT\ChuongTrinhDaoTao.cshtml" />
+    <Content Include="Areas\QuanLy\Views\QLyTaiKhoan\PhanQuyen.cshtml" />
     <None Include="Areas\QuanLy\Views\Shared\QuanLy.cshtml" />
     <Content Include="Areas\SinhVien\Views\Home\TrangChu.cshtml" />
     <Content Include="Areas\QuanLy\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\SinhVien\Views\CapNhatTT\CapNhatTT.cshtml" />
     <Content Include="Areas\SinhVien\Views\HocKy\HocKy.cshtml" />
+    <Content Include="Areas\SinhVien\Views\CapnhatTaiKhoan\CapNhatTK.cshtml" />
     <None Include="Areas\SinhVien\Views\Shared\SinhVien.cshtml" />
     <Content Include="Content\assets\css\animate.css\css\animate.css" />
     <Content Include="Content\assets\css\bootstrap\css\bootstrap.min.css" />

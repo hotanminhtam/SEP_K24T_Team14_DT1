@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,7 +64,7 @@
                             }
                             else
                             {
-                                <a class="button button-outline button-small" href="@Url.Action("CapNhatTT", "CapNhatTT")">@User.Identity.Name</a>
+                                <a class="button button-outline button-small" href="@Url.Action("CapNhatTK", "CapNhatTaiKhoan", new { id = User.Identity.GetUserId() })">@User.Identity.Name</a>
                             }
                         </div>
                     </div>

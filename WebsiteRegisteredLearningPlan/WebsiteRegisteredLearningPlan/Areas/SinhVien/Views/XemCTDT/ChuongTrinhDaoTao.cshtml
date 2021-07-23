@@ -14,13 +14,15 @@
             <div class="col-ld" style="text-align:center">
                 <form action="@Url.Action("Search", "XemCTDT")" method="get">
                     <p>
-                        <input type="text" name="keyword" autocomplete="off"/>
-                        <input type="submit" value="Tìm kiếm"/>
+                        <input type="text" name="keyword" autocomplete="off" />
+                        <input type="submit" value="Tìm kiếm" />
                     </p>
                 </form>
             </div>
         </div>
     </div>
+
+    <a href="/XemCTDT/ExportToExcel">Export to excel</a>
 
     <div class="table-responsive">
         <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">

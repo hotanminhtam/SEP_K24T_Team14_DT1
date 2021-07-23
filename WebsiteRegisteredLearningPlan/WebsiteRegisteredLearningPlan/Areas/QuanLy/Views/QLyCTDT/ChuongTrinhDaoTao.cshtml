@@ -1,7 +1,7 @@
-﻿@model List<WebsiteRegisteredLearningPlan.Models.AspNetUser>
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
 
 @{
-    ViewBag.Title = "QLyTaiKhoan";
+    ViewBag.Title = "CapNhatTG";
     Layout = null;
 }
 
@@ -166,7 +166,7 @@
                                         </a>
                                     </li>
                                     <li class="waves-effect waves-light">
-                                        <a href="#">
+                                        <a href="auth-normal-sign-in.html">
                                             <i class="ti-layout-sidebar-left"></i> Logout
                                         </a>
                                     </li>
@@ -176,7 +176,6 @@
                     </div>
                 </div>
             </nav>
-
 
             <div class="pcoded-main-container">
                 <div class="pcoded-wrapper">
@@ -194,7 +193,7 @@
                                         <li class="more-details">
                                             <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
                                             <a href="#!"><i class="ti-settings"></i>Settings</a>
-                                            <a href="#"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                                            <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -339,7 +338,6 @@
                             </ul>
                         </div>
                     </nav>
-
                     <div class="pcoded-content">
                         <!-- Page-header start -->
                         <div class="page-header">
@@ -347,7 +345,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-8">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10">Danh sách tài khoản</h5>
+                                            <h5 class="m-b-10">Chương trình đào tạo</h5>
                                             @*<p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>*@
                                         </div>
                                     </div>
@@ -360,7 +358,7 @@
                                                 <a href="@Url.Action("TrangChu", "Home")">Trang chủ</a>
                                             </li>
                                             <li class="breadcrumb-item">
-                                                <a href="@Url.Action("QLyTaiKhoan", "QLyTaiKhoan")">Tài khoản</a>
+                                                <a href="@Url.Action("ChuongTrinhDaoTao", "QLyCTDT")">Chương trình đào tạo</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -377,7 +375,7 @@
                                         <!-- Basic table card start -->
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Danh sách tài khoản</h5>
+                                                <h5>Chương trình đào tạo</h5>
                                                 <div class="card-header-right">
                                                     <ul class="list-unstyled card-option">
                                                         <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -393,9 +391,19 @@
                                                     <table class="table">
                                                         <thead class="thead-dark">
                                                             <tr>
-                                                                <th>Email</th>
+                                                                <th>STT</th>
 
-                                                                <th>Quyền</th>
+                                                                <th>Mã học phần</th>
+
+                                                                <th>Tên học phần</th>
+
+                                                                <th>Học kì</th>
+
+                                                                <th>Tín chỉ</th>
+
+                                                                <th>Ngày bắt đầu</th>
+
+                                                                <th>Ngày kết thúc</th>
 
                                                                 <th>Cập nhật</th>
                                                             </tr>
@@ -404,18 +412,21 @@
                                                             @foreach (var item in Model)
                                                             {
                                                                 <tr>
-                                                                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                                                    <td>@Html.DisplayFor(modelItem => item.id)</td>
 
-                                                                    @if (item.AspNetRoles.Count == 0)
-                                                                    {
-                                                                        <td>Sinh viên</td>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <td>@Html.DisplayFor(modelItem => item.AspNetRoles.ToList()[0].Name)</td>
-                                                                    }
+                                                                    <td>@Html.DisplayFor(modelItem => item.mahp)</td>
 
-                                                                    <td><a href="~/QuanLy/QLyTaiKhoan/PhanQuyen?username=@item.Email">Chỉnh sửa</a></td>
+                                                                    <td>@Html.DisplayFor(modelItem => item.tenhp)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.hocky)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.tinchi)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.HOCKY1.ngaybd)</td>
+
+                                                                    <td>@Html.DisplayFor(modelItem => item.HOCKY1.ngaykt)</td>
+
+                                                                    <td><a href="#">Chỉnh sửa</a></td>
                                                                 </tr>
                                                             }
                                                         </tbody>
@@ -434,6 +445,8 @@
             </div>
         </div>
     </div>
+    <!-- Warning Section Starts -->
+    <!-- Warning Section Ends -->
     <!-- Required Jquery -->
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery/jquery.min.js ")"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/assets/js/jquery-ui/jquery-ui.min.js ")"></script>

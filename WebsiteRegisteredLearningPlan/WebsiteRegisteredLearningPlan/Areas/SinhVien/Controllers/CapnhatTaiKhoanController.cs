@@ -7,11 +7,11 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
-    public class CapNhatTTController : Controller
+    public class CapnhatTaiKhoanController : Controller
     {
-        private Entities db = new Entities();
-        // GET: SinhVien/CapNhatTT
-        public ActionResult CapnhatTT(string id)
+        Entities db = new Entities();
+        // GET: SinhVien/CapnhatTaiKhoan
+        public ActionResult CapNhatTK(string id)
         {
             var user = db.CTTAIKHOANs.Find(id) ?? new CTTAIKHOAN
             {
@@ -46,7 +46,7 @@ namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
             }
             db.SaveChanges();
             ViewBag.message = "Cập nhật thành công";
-            return View("CapNhatTT", user);
+            return View("CapnhatTK", user);
         }
     }
 }

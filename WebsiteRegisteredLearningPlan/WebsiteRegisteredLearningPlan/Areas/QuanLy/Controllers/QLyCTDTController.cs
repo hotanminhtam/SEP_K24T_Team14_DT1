@@ -7,13 +7,14 @@ using WebsiteRegisteredLearningPlan.Models;
 
 namespace WebsiteRegisteredLearningPlan.Areas.QuanLy.Controllers
 {
-    public class CapNhatTGController : Controller
+    [Authorize]
+    public class QLyCTDTController : Controller
     {
         Entities db = new Entities();
-        // GET: QuanLy/CapNhatTG
-        public ActionResult CapNhatTG()
+        // GET: QuanLy/QLyCTDT
+        public ActionResult ChuongTrinhDaoTao()
         {
-            var ctdt = db.CTDTs.ToList();
+            var ctdt = db.CTDTs.ToList(); 
             return View(ctdt);
         }
     }

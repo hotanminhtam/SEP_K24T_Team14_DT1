@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace WebsiteRegisteredLearningPlan.Areas.SinhVien.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         // GET: SinhVien/Home

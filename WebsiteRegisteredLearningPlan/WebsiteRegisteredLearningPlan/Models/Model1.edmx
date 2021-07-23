@@ -101,6 +101,7 @@
           <Property Name="mahp" Type="int" />
           <Property Name="ngaydk" Type="datetime" />
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="active" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -405,6 +406,7 @@
           <Property Name="mahp" Type="Int32" />
           <Property Name="ngaydk" Type="DateTime" Precision="3" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="active" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="SEP24Team14Model.FK_KQDK_EMAIL" FromRole="KETQUADANGKY" ToRole="AspNetUser" />
           <NavigationProperty Name="CTDT" Relationship="SEP24Team14Model.FK_KQDK_MAHP" FromRole="KETQUADANGKY" ToRole="CTDT" />
         </EntityType>
@@ -592,6 +594,7 @@
           <EntitySetMapping Name="KETQUADANGKies">
             <EntityTypeMapping TypeName="SEP24Team14Model.KETQUADANGKY">
               <MappingFragment StoreEntitySet="KETQUADANGKY">
+                <ScalarProperty Name="active" ColumnName="active" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ngaydk" ColumnName="ngaydk" />
                 <ScalarProperty Name="mahp" ColumnName="mahp" />
