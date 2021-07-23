@@ -1,0 +1,81 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+@{
+    ViewBag.Title = "Học Kỳ";
+}
+<section class="hero-banner hero-banner-sm text-center">
+    <div class="container">
+        <h1>Học kỳ</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Học kỳ</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section style="margin: 40px 0" class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    @*<div class="title" style="text-align:center">
+                        <h2> HỌC KỲ </h2>
+                    </div>*@
+                    <!-- Example single danger button -->
+                    <div  class="btn-group">
+                        <button style="margin-bottom:10px; width: 120px" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Học kỳ
+                        </button>
+                        <p></p>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("HocKy", "HocKy", new { Hk = 1 })">Học kỳ 1</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 2 })">Học kỳ 2</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 3 })">Học kỳ 3</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 4})">Học kỳ 4</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 5})">Học kỳ 5</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 6})">Học kỳ 6</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 7})">Học kỳ 7</a>
+                            <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 8})">Học kỳ 8</a>
+                        </div>
+                    </div>
+
+
+                    <center>
+                        <table class="table table-bordered" style="text-align: center ">
+                            <thead>
+                                <tr >
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    @*<th>
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int i = 0; i < Model.Count; i++)
+                                {
+                                var item = Model[i];
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.mahp</td>
+                                        <td>@item.hocky</td>
+                                        <td>@item.tenhp</td>
+                                        <td>@item.tinchi</td>
+                                        @*<td>
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

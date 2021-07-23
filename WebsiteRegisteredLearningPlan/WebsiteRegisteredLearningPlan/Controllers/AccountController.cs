@@ -74,7 +74,6 @@ namespace WebsiteRegisteredLearningPlan.Controllers
             {
                 return View(model);
             }
-
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -335,7 +334,7 @@ namespace WebsiteRegisteredLearningPlan.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("/SEP24Team14" + returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -343,7 +342,7 @@ namespace WebsiteRegisteredLearningPlan.Controllers
                 case SignInStatus.Failure:
                 default:
                     // If the user does not have an account, then prompt the user to create an account
-                    ViewBag.ReturnUrl = returnUrl;
+                    ViewBag.ReturnUrl =  returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     //return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
                     var info = await AuthenticationManager.GetExternalLoginInfoAsync();
@@ -361,7 +360,7 @@ namespace WebsiteRegisteredLearningPlan.Controllers
                             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         }
                     }
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal("/SEP24Team14" + returnUrl);
             }
         }
 

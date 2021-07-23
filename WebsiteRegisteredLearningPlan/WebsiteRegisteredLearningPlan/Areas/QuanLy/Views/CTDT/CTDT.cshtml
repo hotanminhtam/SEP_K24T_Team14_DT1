@@ -1,0 +1,56 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+@{
+    ViewBag.Title = "Chương trình đào tạo";
+}
+
+
+
+<!-- Main-body start -->
+<div class="main-body">
+    <div class="page-wrapper">
+        <!-- Page-body start -->
+        <div class="page-body">
+            <!-- Basic table card start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Học kỳ</h5>
+                    @*<span>use class <code>table</code> inside table element</span>*@
+                </div>
+                <div class="card-block table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model )
+                                {
+                                <tr>
+                                    <td scope="row">@item.id</td>
+                                    <td>@item.mahp</td>
+                                    <td>@item.hocky</td>
+                                    <td>@item.tenhp</td>
+                                    <td>@item.tinchi</td>
+                                </tr>
+                                }
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Basic table card end -->
+        </div>
+        <!-- Page-body end -->
+    </div>
+</div>
+<!-- Main-body end -->
+
+<div id="styleSelector">
+
+</div>

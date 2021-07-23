@@ -1,0 +1,83 @@
+﻿@model WebsiteRegisteredLearningPlan.Models.HOCKY
+
+@{
+    ViewBag.Title = "Cập nhật thời hạn";
+    //Layout = "~/Areas/QuanLy/Views/Shared/QuanLy.cshtml";
+}
+
+<div class="col-md-4">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html"> <i class="fa fa-home"></i> </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="~/QuanLy/DeadlineHK/DeadlineHK">Cập nhật deadline</a>
+        </li>
+    </ul>
+</div>
+<div class="pcoded-inner-content">
+    <!-- Main-body start -->
+    <div class="main-body">
+        <div class="page-wrapper">
+            <!-- Page-body start -->
+            <div class="page-body">
+                <!-- Basic table card start -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Học kỳ</h5>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <h6>Tên học kỳ</h6>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.tenhk, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.tenhk, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @Html.HiddenFor(model => model.mahk)
+
+                                <div class="form-group">
+                                    <h6>Ngày bắt đầu</h6>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ngaybd, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ngaybd, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <h6>Ngày kết thúc</h6>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.ngaykt, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ngaykt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "HocKyQL")
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic table card end -->
+            </div>
+            <!-- Page-body end -->
+        </div>
+    </div>
+    <!-- Main-body end -->
+
+    <div id="styleSelector">
+
+    </div>
+</div>

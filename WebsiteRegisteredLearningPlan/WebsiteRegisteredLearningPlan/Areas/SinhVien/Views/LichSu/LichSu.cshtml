@@ -1,0 +1,77 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.KETQUADANGKY>
+@{
+    ViewBag.Title = "Lịch Sử";
+}
+<section class="hero-banner hero-banner-sm text-center">
+    <div class="container">
+        <h1>Lịch sử đăng ký kế hoạch học tập</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Lịch Sử</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section style="margin: 40px 0" class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    @*<div class="btn-group">
+                            <button style="margin-bottom:10px; width: 120px" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Học kỳ
+                            </button>
+                            <p></p>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("HocKy", "HocKy", new { Hk = 1 })">Học kỳ 1</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 2 })">Học kỳ 2</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 3 })">Học kỳ 3</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 4})">Học kỳ 4</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 5})">Học kỳ 5</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 6})">Học kỳ 6</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 7})">Học kỳ 7</a>
+                                <a class="dropdown-item" href="@Url.Action("Hocky", "Hocky", new { Hk = 8})">Học kỳ 8</a>
+                            </div>
+                        </div>*@
+                    <center>
+                        <table class="table table-bordered" style="text-align: center ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Học kỳ</th>
+                                    <th scope="col">Môn học</th>
+                                    <th scope="col">Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (var i = 0; i < Model.Count; i++)
+                                {
+                                    var item = Model[i];
+                                    <tr>
+                                        <th scope="row">@i</th>
+                                        <td>@item.AspNetUser.Email</td>
+                                        <td>@item.CTDT.hocky</td>
+                                        <td>@item.CTDT.tenhp</td>
+                                        <td>@item.ngaydk</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="btn-link" style="text-align: right">
+                            <button style="width:120px" type="submit" class="btn btn-danger" id="print">Xuất lịch sử</button>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script>
+        $('#print').click(function () {
+            window.print();
+        });
+    </script>
+}

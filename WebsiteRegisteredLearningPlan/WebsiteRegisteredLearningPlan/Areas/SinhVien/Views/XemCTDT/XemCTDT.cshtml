@@ -1,0 +1,58 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Models.CTDT>
+@{
+    ViewBag.Title = "Chương trình đào tạo";
+}
+<section class="hero-banner hero-banner-sm text-center">
+    <div class="container">
+        <h1>Chương trình đào tạo</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chương trình đào tạo</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section style="margin: 40px 0" class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    @*<div class="title" style="text-align:center">
+                        <h2>CHƯƠNG TRÌNH ĐÀO TẠO  </h2>
+                    </div>*@
+                    <center>
+                        <table class="table table-bordered" style="text-align: center ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    @*<th>
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.id</th>
+                                        <td>@item.mahp</td>
+                                        <td>@item.hocky</td>
+                                        <td>@item.tenhp</td>
+                                        <td>@item.tinchi</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->

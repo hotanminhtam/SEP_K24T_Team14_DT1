@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Thống Kê";
+
+}
+
+<div class="col-md-4">
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="~/QuanLy/ThongKe/ThongKe"> <i class="fa fa-home"></i> </a>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="~/QuanLy/ThongKe/ThongKe">Thống Kê học kỳ @ViewBag.hk</a>
+        </li>
+    </ul>
+</div>
+
+@section js{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            $(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ChartData", "ThongKe", new { area = "QuanLy", hk = ViewBag.hk })',
+                    success: function (charts) {
+                        if (charts.code == 404) {
+                            alert("Error loading data! Please try again.");
+                            return;
+                        }
+                        var data = charts.dbchart;
+                        var chartdb = new google.visualization.DataTable();
+
+                        chartdb.addColumn('string', 'Môn học');
+                        chartdb.addColumn('number', 'Số lượng');
+                        for (var i = 0; i < data.length; i++) {
+                            chartdb.addRow([data[i].name, data[i].count]);
+                        }
+                        console.log(chartdb);
+                        var chart = new google.visualization.BarChart(document.getElementById('myChart'));
+                        chart.draw(chartdb,
+                            {
+                                title: "Biểu đồ đăng ký môn học - học kỳ @ViewBag.hk",
+                            position: "top",
+                            fontsize: "14px",
+                        });
+
+                    },
+                    error: function () {
+                        alert("Error loading data! Please try again.");
+                    }
+                });
+            })
+
+        }
+    </script>
+}
+<div id="myChart" style="width:100%; max-width:1500px; height:1000px;"></div>
+<a href="@Url.Action("print","XuatThongKe", new { hk = ViewBag.hk })" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Xuất thống kê</a>

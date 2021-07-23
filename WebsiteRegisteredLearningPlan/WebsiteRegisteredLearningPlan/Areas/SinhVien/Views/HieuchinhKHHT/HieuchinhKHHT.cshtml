@@ -1,0 +1,96 @@
+﻿@model List<WebsiteRegisteredLearningPlan.Areas.SinhVien.Models.KetQuaDangKyViewModel>
+@{
+    ViewBag.Title = "Hiệu chỉnh";
+}
+
+<section class="hero-banner hero-banner-sm text-center">
+    <div class="container">
+        <h1>Hiệu chỉnh kế hoạch học tập</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Hiệu chỉnh kế hoạch học tập</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<section style="margin: 40px 0"class="blog_area single-post-area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post">
+                    @*<div class="title" style="text-align:center">
+            <h2> HIỆU CHỈNH KẾ HOẠCH HỌC TẬP </h2>
+        </div>*@
+                    <form action="@Url.Action("HieuchinhKHHT", "HieuchinhKHHT")" method="post">
+                        <p>
+
+                        </p>
+                        <input type="hidden" value="@ViewBag.hocKy" name="hk"/>
+                        <table class="table table-bordered" style="text-align: center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">HK</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    <th scope="col"></th>
+                                    @*<th>
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                </th>*@
+                                </tr>
+                            </thead>
+
+                            @Html.AntiForgeryToken()
+                            <tbody>
+
+
+                                @for (var i = 0; i < Model.Count; i++)
+                                {
+                                    var item = Model[i];
+                                    <tr>
+                                        <td style="display: none"> <input name="model[@i].id" value="@item.ctdt.id"></td>
+                                        <th scope="row">@i</th>
+                                        <td>@item.ctdt.mahp</td>
+                                        <td>@item.ctdt.hocky</td>
+                                        <td>@item.ctdt.tenhp</td>
+                                        <td>@item.ctdt.tinchi</td>
+                                        <td style="display: none"> <input name="model[@i].soTinChi" value="@item.ctdt.tinchi"></td>
+                                        <td>
+                                            @if (item.chosen)
+                                            {
+                                                <input type="checkbox" name="model[@i].isChosen" value="true" checked>
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="model[@i].isChosen" value="true">
+                                            }
+                                            <input type="hidden" name="model[@i].isChosen" value="false" />
+                                            <span class="checkmark"></span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+
+                        @if (ViewBag.error != null)
+                        {
+                            <h3 style="color:#0f00e3">@ViewBag.error</h3>
+                        }
+                        else
+                        {
+                            <h3 style="color:#0f00e3">@ViewBag.success</h3>
+                        }
+                        <div class="btn-link" style="text-align: right">
+                            <button style="width:120px" type="submit" class="btn btn-danger">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================Blog Area =================-->

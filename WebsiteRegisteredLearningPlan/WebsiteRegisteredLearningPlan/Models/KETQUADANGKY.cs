@@ -18,6 +18,7 @@ namespace WebsiteRegisteredLearningPlan.Models
         public Nullable<int> mahp { get; set; }
         public Nullable<System.DateTime> ngaydk { get; set; }
         public int id { get; set; }
+        public Nullable<int> active { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual CTDT CTDT { get; set; }
