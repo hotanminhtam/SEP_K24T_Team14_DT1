@@ -55,10 +55,10 @@ namespace WebsiteRegisteredLearningPlan.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Mật khẩu")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Ghi nhớ mật khẩu?")]
+        [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
 
