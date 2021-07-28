@@ -217,6 +217,7 @@
     <Compile Include="Areas\SinhVien\Models\KetQuaDangKyViewModel.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -463,6 +464,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css_error\StyleSheet.css" />
     <Content Include="Content\img\banner\hero-banner-bg.png" />
     <Content Include="Content\img\banner\home3.png" />
     <Content Include="Content\img\banner\home4.png" />
@@ -1234,6 +1236,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Areas\QuanLy\Views\XuatThongKe\" />
+    <Folder Include="Views\CustomError\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
