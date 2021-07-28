@@ -1235,7 +1235,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Areas\QuanLy\Views\XuatThongKe\" />
-    <Folder Include="Views\CustomError\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
