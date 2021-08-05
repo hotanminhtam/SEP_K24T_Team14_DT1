@@ -217,6 +217,7 @@
     <Compile Include="Areas\SinhVien\Models\KetQuaDangKyViewModel.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1235,6 +1236,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\QuanLy\Models\" />
     <Folder Include="Areas\QuanLy\Views\XuatThongKe\" />
+    <Folder Include="Views\CusError\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

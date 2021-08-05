@@ -8,12 +8,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
-  
     <link href="@Url.Content("~/Content/css_error/StyleSheet.css")" rel="stylesheet" />
 
 </head>
+
 <body>
 
     <section class="notFound">
@@ -21,21 +20,20 @@
             <img src="https://assets.codepen.io/5647096/backToTheHomepage.png" alt="Back to the Homepage" />
             <img src="https://assets.codepen.io/5647096/Delorean.png" alt="El Delorean, El Doc y Marti McFly" />
         </div>
-   
+
         <div class="text">
             <h1>404</h1>
             <h2>PAGE NOT FOUND</h2>
             <h3>BACK TO HOME?</h3>
-            <a href="@Url.Content("~/SinhVien/Home/TrangChu")" class="yes">YES</a>
-            <a href="https://www.youtube.com/watch?v=afNQLlTRvfM">NO</a>
+            <a href="#" class="yes">YES</a>
+            <a href="https://www.youtube.com/watch?v=a80UUwVfUjA">NO</a>
         </div>
 
 
     </section>
-
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @*@RenderSection("scripts", required: false)*@
+
 </body>
 </html>
