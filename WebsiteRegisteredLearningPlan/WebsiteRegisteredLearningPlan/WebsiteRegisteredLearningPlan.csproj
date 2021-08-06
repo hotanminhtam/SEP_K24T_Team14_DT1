@@ -217,6 +217,7 @@
     <Compile Include="Areas\SinhVien\Models\KetQuaDangKyViewModel.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -463,6 +464,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\magnific-popup.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\css_error\StyleSheet1.css" />
     <Content Include="Content\img\banner\hero-banner-bg.png" />
     <Content Include="Content\img\banner\home3.png" />
     <Content Include="Content\img\banner\home4.png" />
@@ -1229,6 +1231,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
