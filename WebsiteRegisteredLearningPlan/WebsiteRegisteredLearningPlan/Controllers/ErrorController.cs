@@ -10,8 +10,15 @@ namespace WebsiteRegisteredLearningPlan.Controllers
     {
         // GET: Error
         public ActionResult Index()
-        {
-            return View();
-        }
+    {
+        ViewBag.Title = "Regular Error";
+        return View();
+    }
+
+    public ActionResult NotFound404()
+    {
+        ViewBag.Title = "Error 404 - File not Found";
+        return View("Index");
+    }
     }
 }
